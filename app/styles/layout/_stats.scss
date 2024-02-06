@@ -1,0 +1,11 @@
+.stats {
+
+
+    &-all {
+        width: fit-content;
+        float: right;
+        border-left: 2px solid $primary;
+        border-bottom: 2px solid $primary;
+        min-height: calc(100vh - 6rem);
+    }
+}

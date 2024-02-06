@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
 import SessionWrapper from "./providers/SessionWrapper";
-const inter = Inter({ subsets: ["latin"] });
-import { NavBar } from "./components/NavBar";
+const poppins = Poppins({ subsets: ["latin"], weight: ["400", "700", "900"] });
+import "@/app/styles/main.css";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,8 +19,7 @@ export default async function RootLayout({
   return (
     <SessionWrapper>
     <html lang="en">
-      <body className={inter.className}>
-        <NavBar />
+      <body className={poppins.className}>
         {children}
       </body>
     </html>
