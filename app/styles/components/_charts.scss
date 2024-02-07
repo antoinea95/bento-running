@@ -1,0 +1,13 @@
+.chart {
+    &-tooltip {
+        padding: 1rem;
+        background-color: transparent;
+
+        &_label {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: $primary;
+        }
+    }
+}

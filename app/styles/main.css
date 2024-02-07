@@ -171,4 +171,15 @@ h1 {
 .data-card_data {
   font-size: 2rem;
   padding: 1rem;
+}
+
+.chart-tooltip {
+  padding: 1rem;
+  background-color: transparent;
+}
+.chart-tooltip_label {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #fc4c01;
 }/*# sourceMappingURL=main.css.map */
