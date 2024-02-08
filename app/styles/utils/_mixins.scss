@@ -28,3 +28,19 @@ $breakpoints: (
     justify-content: $justify;
     align-items: $align;
 }
+
+@mixin box() {
+  width: fit-content;
+  background-color: $secondary;
+  border-radius: 2rem;
+  padding: 3rem;
+  margin: 2rem;
+}
+
+@mixin componentTitlte() {
+        margin-bottom: 2rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        font-size: 2rem;
+        @include flexbox(row, flex-start, center);
+}

@@ -173,13 +173,78 @@ h1 {
   padding: 1rem;
 }
 
+.chart-container {
+  width: fit-content;
+  background-color: #F7F0F0;
+  border-radius: 2rem;
+  padding: 3rem;
+  margin: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.chart-title {
+  margin-bottom: 2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
 .chart-tooltip {
-  padding: 1rem;
   background-color: transparent;
 }
 .chart-tooltip_label {
   font-family: "Poppins", sans-serif;
   font-size: 1.5rem;
   font-weight: 900;
+  color: black;
+}
+
+.summary-container {
+  width: fit-content;
+  background-color: #F7F0F0;
+  border-radius: 2rem;
+  padding: 3rem;
+  margin: 2rem;
+}
+.summary-title {
+  margin-bottom: 2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.summary-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.summary-content_item {
+  border-right: 1px solid;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0 2rem;
+}
+.summary-content_item:last-child {
+  border: none;
+}
+.summary-content_item h3 {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1.8rem;
+}
+.summary-content_item p {
   color: #fc4c01;
+  font-weight: 900;
+  font-size: 1.6rem;
 }/*# sourceMappingURL=main.css.map */

@@ -76,7 +76,6 @@ export const authOptions: NextAuthOptions = {
         token.refreshToken = account.refresh_token
         token.user = user;
         }
-
          // Return previous token if the access token has not expired yet
       if (Date.now() < (token.accessTokenExpires as number)) {
         return token
