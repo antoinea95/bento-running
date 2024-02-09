@@ -3,6 +3,8 @@ import { authOptions } from "../api/auth/[...nextauth]/route"
 import { StravaActivitieType, StravaActivitiesSchema, StravaActivitiesType, fetchResult } from "../types/schema";
 import { redirect } from "next/navigation";
 import { ZodSchema } from "zod";
+import { getEpochTime } from "../utils/helpers";
+import { unstable_noStore } from "next/cache";
 
 
 export const getStravaSession = async () => {
@@ -19,7 +21,8 @@ export const getStravaSession = async () => {
 
 export const fetchStravaApi = async <DataType>(url: string, zodSchema: ZodSchema, method: string = "GET") => {
 
-  console.log(url)
+  unstable_noStore();
+
   const results:fetchResult<DataType> = {
     data: null,
     error: null
@@ -29,6 +32,8 @@ export const fetchStravaApi = async <DataType>(url: string, zodSchema: ZodSchema
   const accessToken = session.accessToken;
 
     try {
+
+        await new Promise((resolve) => setTimeout(resolve, 3000))
         const response = await fetch(url, {
         method: method, 
         headers: {
@@ -37,22 +42,22 @@ export const fetchStravaApi = async <DataType>(url: string, zodSchema: ZodSchema
           Authorization: `Bearer ${accessToken}`
         },
       })
+      console.log('Data fetch completed after 3 seconds.')
 
       
       const rawData = await response.json();
       results.data = zodSchema.parse(rawData);
 
     } catch (error) {
-      console.log(error);
         if(error instanceof Error) results.error = error.message
         results.error = String(error);
     }
     return results
 }
 
-export const useFetchActivities = async (params: number | null ) => {
+export const fetchActivities = async (params: number | null ) => {
   try {
-    // Appel de la fonction fetchStravaApi pour récupérer les activités Strava
+
     const activitiesResult = await fetchStravaApi<StravaActivitiesType>(`https://www.strava.com/api/v3/athlete/activities?per_page=200${params ? `&after=${params}` : ""}`, StravaActivitiesSchema);
 
     if (activitiesResult.error) {
@@ -60,8 +65,9 @@ export const useFetchActivities = async (params: number | null ) => {
     }
 
     if (!activitiesResult.data) {
-      throw new Error("Les données d'activités sont null");
+      throw new Error("No activities found");
     }
+
     const runActivities = activitiesResult.data.filter((activity: StravaActivitieType) => activity.type === "Run");
 
     return runActivities;
@@ -70,3 +76,41 @@ export const useFetchActivities = async (params: number | null ) => {
     return [];
   }
 }
+
+export const fetchAllActivities = async () => {
+  unstable_noStore();
+
+  let allActivities: StravaActivitieType[] = [];
+  let page = 1;
+  let perPage = 30;
+  const {januaryFirstEpoch} = getEpochTime(new Date());
+
+  try {
+    while (true) {
+      const activitiesResult = await fetchStravaApi<StravaActivitiesType>(
+        `https://www.strava.com/api/v3/athlete/activities?after=${januaryFirstEpoch}&per_page=${perPage}&page=${page}`,
+        StravaActivitiesSchema
+      );
+
+      if (activitiesResult.error) {
+        throw new Error(activitiesResult.error);
+      }
+
+      if (!activitiesResult.data || activitiesResult.data.length === 0) {
+        break;
+      }
+
+      allActivities = allActivities.concat(
+        activitiesResult.data.filter((activity: StravaActivitieType) => activity.type === "Run")
+      );
+
+      // Passer à la page suivante
+      page++;
+    }
+
+    return allActivities;
+  } catch (error) {
+    console.error("Une erreur s'est produite lors de la récupération des activités :", error);
+    return [];
+  }
+};

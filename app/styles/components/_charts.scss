@@ -11,6 +11,16 @@
     &-tooltip {
         background-color: transparent;
 
+        &_monthly {
+            background-color: white;
+            padding: 1rem;
+            border-radius: 1rem;
+
+            p {
+                color: $primary;
+            }
+        }
+
         &_label {
             font-family: 'Poppins', sans-serif;
             font-size: 1.5rem;

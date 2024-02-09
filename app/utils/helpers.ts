@@ -1,4 +1,4 @@
-import { StravaActivitieType, StravaActivitiesType, StravaWeeklyTotal } from "../types/schema";
+import { StravaActivitieType, StravaActivitiesType, StravaTotal } from "../types/schema";
 
 function convertSecondsInTime(secondes: number): string {
   const heures = Math.floor(secondes / 3600);
@@ -20,33 +20,69 @@ function getStartOfWeek(date: Date): Date {
   return new Date(date.setDate(diff)); // Affectez la nouvelle date
 }
 
-export function getPreviousWeekAndMonthDates(today: Date): {
+export function getEpochTime(today: Date): {
   previousWeekEpoch: number;
   previousMonthEpoch: number;
+  januaryFirstEpoch: number;
 } {
   // Date de la semaine précédente
   const previousWeek = getStartOfWeek(today);
   const previousWeekEpoch = Math.round(previousWeek.getTime() / 1000);
 
   // Date du mois précédent
-  const previousMonth = new Date(today);
-  previousMonth.setMonth(previousMonth.getMonth() - 1);
+  const previousMonth = getStartOfWeek(today);
+  previousMonth.setDate(previousMonth.getDate() - 21);
   const previousMonthEpoch = Math.round(previousMonth.getTime() / 1000);
 
-  return { previousWeekEpoch, previousMonthEpoch };
+  // Date du 1er janvier de l'année en cours
+  const januaryFirst = new Date(today.getFullYear(), 0, 1);
+  const januaryFirstEpoch = Math.round(januaryFirst.getTime() / 1000);
+
+
+  return { previousWeekEpoch, previousMonthEpoch , januaryFirstEpoch};
 }
 
-export function calculateAllTimesHistory(activities: StravaActivitiesType) {
-  
+export function calculateMonthlyTotalRuns(activities: StravaActivitiesType) : StravaTotal[] {
+  const monthlyDistance: Record<string, number> = {};
+
+  activities.forEach((activity) => {
+    const {distance, start_date_local} = activity
+    const startDate = new Date(start_date_local);
+    const monthNames = [
+      "Jan.", "Feb.", "Mar.", "Apr.", "May", "Jun.",
+      "Jul.", "Aug.", "Sep.", "Oct.", "Nov.", "Dec."
+    ];
+
+    const month = startDate.getMonth();
+    const monthKey = `${monthNames[month]}`;
+
+    if(monthlyDistance[monthKey]) {
+      monthlyDistance[monthKey] += Math.round(distance / 1000);
+    } else {
+      monthlyDistance[monthKey] = Math.round(distance / 1000);
+    }
+  })
+
+  const monthlyTotalRuns = Object.keys(monthlyDistance).map((key) => {
+    return {
+      date: key,
+      kilometers: Math.round(monthlyDistance[key]),
+    };
+})
+
+
+return monthlyTotalRuns;
 
 }
 
 export function calculateWeeklyTotalRuns(
   activities: StravaActivitiesType
-): StravaWeeklyTotal[] {
-  const rawWeeklyTotalRuns = new Map<string, number>();
+): StravaTotal[] {
+  const weeklyDistance: Record<string, number> = {};
+  
 
   activities.forEach((activity) => {
+
     const startDate = getStartOfWeek(new Date(activity.start_date_local));
 
     const endDate = new Date(startDate);
@@ -64,23 +100,24 @@ export function calculateWeeklyTotalRuns(
 
     const weekKey = `${weekStartDate} - ${weekEndDate}`;
 
-    if (!rawWeeklyTotalRuns.has(weekKey)) {
-      rawWeeklyTotalRuns.set(weekKey, 0);
+    if (weeklyDistance[weekKey]) {
+      weeklyDistance[weekKey] += Math.round(activity.distance / 1000);
+    } else {
+      weeklyDistance[weekKey] = Math.round(activity.distance / 1000);
     }
-    rawWeeklyTotalRuns.set(
-      weekKey,
-      rawWeeklyTotalRuns.get(weekKey)! + activity.distance / 1000
-    );
   });
 
-  const weeklyTotalRuns = Array.from(rawWeeklyTotalRuns, ([key, value]) => {
+  const weeklyTotalRuns = Object.keys(weeklyDistance).map((key) => {
     return {
-      week: key,
-      kilometers: Math.round(value),
+      date: key,
+      kilometers: Math.round(weeklyDistance[key]),
     };
-  });
+})
 
-  return weeklyTotalRuns;
+
+return weeklyTotalRuns;
+
+
 }
 
 export const getWeekSummary = (activities: StravaActivitiesType) => {
@@ -102,5 +139,9 @@ export const getWeekSummary = (activities: StravaActivitiesType) => {
     time: totalTime,
     elevation: `${totalElevation}m`
   }
+
+}
+
+export const getTotalMonth = (activies: StravaActivitiesType) => {
 
 }

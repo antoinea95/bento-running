@@ -69,7 +69,7 @@ export const StravaActivitiesSchema = z.array(StravaActivitieSchema);
 export type StravaActivitieType = z.infer<typeof StravaActivitieSchema >;
 export type StravaActivitiesType = StravaActivitieType[];
 
-export type StravaWeeklyTotal = {
-    week: string,
+export type StravaTotal = {
+    date: string,
     kilometers: number
 }

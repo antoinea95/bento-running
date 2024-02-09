@@ -1,12 +1,18 @@
-import { getPreviousWeekAndMonthDates, getWeekSummary } from "@/app/utils/helpers";
-import { useFetchActivities } from "@/app/lib/strava";
+import { getEpochTime, getWeekSummary } from "@/app/utils/helpers";
+import { fetchActivities } from "@/app/lib/strava";
 import { Flame } from "lucide-react";
 
 export default async function WeekSummary() {
 
-    const {previousWeekEpoch} = getPreviousWeekAndMonthDates(new Date())
-    const activities = await useFetchActivities(previousWeekEpoch)
-    const weekSummary = getWeekSummary(activities);
+    // const {previousWeekEpoch} = getEpochTime(new Date())
+    // const activities = await fetchActivities(previousWeekEpoch)
+    // const weekSummary = getWeekSummary(activities);
+
+    const weekMock = {
+        distance: "30km",
+        time: "2h34mn23s",
+        elevation: "89m"
+    }
 
     return (
         <section className="summary-container">
@@ -15,10 +21,10 @@ export default async function WeekSummary() {
                 This week
             </h2>
             <div className="summary-content">
-                {Object.keys(weekSummary).map((key) => (
+                {Object.keys(weekMock).map((key) => (
                     <div className="summary-content_item" key={key}>
                         <h3>{key}</h3>
-                        <p>{weekSummary[key as keyof typeof weekSummary]}</p>
+                        <p>{weekMock[key as keyof typeof weekMock]}</p>
                     </div>
                 ))}
             </div>
