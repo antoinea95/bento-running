@@ -6,25 +6,25 @@ import { fetchStravaApi } from "../lib/strava";
 
 export default async function Header() {
 
-  const profile = await fetchStravaApi <StravaProfileType>("https://www.strava.com/api/v3/athlete", StravaProfileSchema);
+  // const profile = await fetchStravaApi <StravaProfileType>("https://www.strava.com/api/v3/athlete", StravaProfileSchema);
   
-  if(!profile.data) {
-      return <p>Loading...</p>
-  }
+  // if(!profile.data) {
+  //     return <p>Loading...</p>
+  // }
 
 
   return (
     <header className="header">
-      <p>Welcome {profile.data.firstname}</p>
+      <p>Welcome</p>
 
       <div className="header-profile">
-        <Image
+        {/* <Image
           src={profile.data.profile_medium}
           alt="Profile picture"
           width={40}
           height={40}
           className="header-profile_img"
-        />
+        /> */}
         <SignoutButton />
       </div>
     </header>

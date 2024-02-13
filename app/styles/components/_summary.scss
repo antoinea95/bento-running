@@ -1,13 +1,7 @@
 .summary {
 
-    
-    &-container {
-        @include box;
-    }
-
-
     &-title {
-        @include componentTitlte;
+        @include componentTitle;
     }
 
     &-content {

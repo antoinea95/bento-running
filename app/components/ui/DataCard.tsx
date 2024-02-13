@@ -4,7 +4,7 @@ export default function DataCard({data, title} : {data: StatType, title: string}
 
     const handleConversion = (numberToConvert:number, division:number) => {
         const conversion = numberToConvert / division;
-        return Math.round(conversion);
+        return conversion.toFixed(2);
     }
 
     return (
@@ -24,7 +24,7 @@ export default function DataCard({data, title} : {data: StatType, title: string}
             </div>
             <div className="data-card_category">
                 <h4 className="data-card_category_title">Elevation</h4>
-                <p className="data-card_category_content">{data.elevation_gain} m</p>
+                <p className="data-card_category_content">{Math.round(data.elevation_gain)} m</p>
             </div>
         </section>
     )

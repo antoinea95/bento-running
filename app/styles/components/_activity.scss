@@ -1,0 +1,57 @@
+.activity {
+
+    &-container {
+        border: 1px solid;
+        width: fit-content;
+        padding: 1rem;
+        @include flexbox(row, center, center);
+        margin: 2rem;
+        border-radius: 2rem;
+    }
+
+    &-map {
+        border-radius: 1rem;
+        width: fit-content;
+        overflow: hidden;
+    }
+
+    &-body {
+        min-height: 150px;
+        margin-left: 2rem;
+        
+        &_title {
+            margin-bottom: 2rem;
+            
+            h3 {
+                font-size: 2rem;
+                text-transform: uppercase;
+                font-weight: 700;
+            }
+
+            p {
+                font-size: 1.2rem;
+            }
+        }
+
+        &_content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+
+            &-item {
+                @include flexbox(column, flex-start, flex-start);
+
+                h4 {
+                    text-transform: uppercase;
+                    font-weight: 700;
+                    font-size: 1.5rem;
+                    @include flexbox(row, center, center);
+                }
+
+                p {
+                    font-size: 1.5rem;
+                }
+            }
+        }
+    }
+}

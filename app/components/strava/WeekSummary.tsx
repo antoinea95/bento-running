@@ -4,12 +4,12 @@ import { Flame } from "lucide-react";
 
 export default async function WeekSummary() {
 
-    // const {previousWeekEpoch} = getEpochTime(new Date())
-    // const activities = await fetchActivities(previousWeekEpoch)
-    // const weekSummary = getWeekSummary(activities);
+    const {previousWeekEpoch} = getEpochTime(new Date())
+    const activities = await fetchActivities(previousWeekEpoch)
+    const weekSummary = getWeekSummary(activities);
 
     const weekMock = {
-        distance: "30km",
+        distance: "30.34km",
         time: "2h34mn23s",
         elevation: "89m"
     }

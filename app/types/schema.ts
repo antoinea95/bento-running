@@ -39,6 +39,7 @@ export type StravaStatType = z.infer<typeof StravaStatSchema>;
 
 // activities
 export const StravaActivitieSchema = z.object({
+    id: z.number(),
     name: z.string(),
     distance: z.number(),
     moving_time: z.number(), 
@@ -59,7 +60,7 @@ export const StravaActivitieSchema = z.object({
     average_speed: z.number(),
     max_speed: z.number(),
     has_heartrate: z.boolean(),
-    average_heartrate: z.number().optional(),
+    average_heartrate: z.number(),
     max_heartrate: z.number().optional(),
     elev_high: z.number().optional(),
     elev_low: z.number().optional()

@@ -2,7 +2,7 @@ import { calculateWeeklyTotalRuns, getEpochTime } from "@/app/utils/helpers";
 import { fetchActivities } from "@/app/lib/strava";
 import { WeekChart } from "../charts/WeekChart";
 import { LineChart } from "lucide-react";
-import { Suspense } from "react";
+
 
 
 export default async function Weekly() {

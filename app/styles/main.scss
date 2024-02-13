@@ -6,6 +6,7 @@
 
 @import "./layout/header";
 @import "./layout/stats";
+@import "./layout/dashboard";
 
 @import "./pages/signin";
 
@@ -13,3 +14,4 @@
 @import "./components/dataCard";
 @import "./components/charts";
 @import "./components/summary";
+@import "./components/activity";
