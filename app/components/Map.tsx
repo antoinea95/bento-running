@@ -5,8 +5,6 @@ import polyline from "@mapbox/polyline";
 import { LatLngExpression, LatLngTuple } from "leaflet";
 import { MapContainer, Polyline, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import { StravaActivitiesType } from "../types/schema";
-
 
 export default function Map({ sumPolyline}: { sumPolyline: string}) {
     const [center, setCenter] = useState<LatLngExpression | undefined>(undefined);

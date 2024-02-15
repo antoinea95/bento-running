@@ -1,15 +1,16 @@
 import { calculateWeeklyTotalRuns, getEpochTime } from "@/app/utils/helpers";
-import { fetchActivities } from "@/app/lib/strava";
 import { WeekChart } from "../charts/WeekChart";
 import { LineChart } from "lucide-react";
+import { fetchStravaActivities } from "@/app/lib/strava";
 
 
 
 export default async function Weekly() {
 
-    // const {previousMonthEpoch} = getEpochTime(new Date())
-    // const activities = await fetchActivities(previousMonthEpoch)
-    // const weekly = calculateWeeklyTotalRuns(activities!);
+    const {previousMonthEpoch} = getEpochTime(new Date())
+    const activities = await fetchStravaActivities("athlete/activities", {page:1, per_page: 200, after: previousMonthEpoch})
+    const weekly = calculateWeeklyTotalRuns(activities);
+
 
     const weeklyMock = [
         {date: "15 - 22 jan.", kilometers: 40},
@@ -24,7 +25,7 @@ export default async function Weekly() {
                 <LineChart color="#fc4c01" style={{marginRight: "1rem"}}/>
                 History
             </h2>
-                <WeekChart data={weeklyMock} />
+                <WeekChart data={weekly} />
         </section>
     )
 }

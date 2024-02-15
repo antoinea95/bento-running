@@ -33,9 +33,9 @@ export const WeekChart = ({ data }: { data: StravaTotal[] }) => {
   return (
     <AreaChart
       data={data}
-      margin={{ top: 5, right: 60, left: 5, bottom: 5 }}
-      width={400}
-      height={130}
+      margin={{ top: 0, right: 60, left: 5, bottom: 0 }}
+      width={420}
+      height={120}
     >
       <defs>
       <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="1">

@@ -1,16 +1,11 @@
-import { fetchStravaApi, getStravaSession } from "@/app/lib/strava"
-import { StravaStatSchema, StravaStatType } from "@/app/types/schema";
+
+import { fetchStravaStat} from "@/app/lib/strava"
 import DataCard from "../ui/DataCard";
 import { Gauge } from "lucide-react";
 
-export const Stats = async () => {
-    // const session = await getStravaSession();
-    // const id = session.id;
-    // const stats = await fetchStravaApi <StravaStatType>(`https://www.strava.com/api/v3/athletes/${id}/stats`, StravaStatSchema);
+export default async function Stats() {
 
-    // if(!stats.data) {
-    //     throw new Error("No stats");
-    // }
+    const stats = await fetchStravaStat()
 
     const mockedStats = {
         recent_run_totals: {
@@ -42,9 +37,9 @@ export const Stats = async () => {
                 <Gauge color="#fc4c01" style={{marginRight: "1rem"}} />
                 Global stats
             </h2>
-            <DataCard data={mockedStats.recent_run_totals} title={"Last 4 weeks"} />
-            <DataCard data={mockedStats.ytd_run_totals} title={"This year"} />
-            <DataCard data={mockedStats.all_run_totals} title={"All times"} />
+            <DataCard data={stats.recent_run_totals} title={"Last 4 weeks"} />
+            <DataCard data={stats.ytd_run_totals} title={"This year"} />
+            <DataCard data={stats.all_run_totals} title={"All times"} />
         </article>
     )
 

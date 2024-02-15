@@ -52,6 +52,7 @@ export function getEpochTime(today: Date): {
 } {
   // Date de la semaine précédente
   const previousWeek = getStartOfWeek(today);
+  previousWeek.setHours(0, 0, 0);
   const previousWeekEpoch = Math.round(previousWeek.getTime() / 1000);
 
   // Date du mois précédent

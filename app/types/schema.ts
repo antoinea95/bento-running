@@ -60,7 +60,7 @@ export const StravaActivitieSchema = z.object({
     average_speed: z.number(),
     max_speed: z.number(),
     has_heartrate: z.boolean(),
-    average_heartrate: z.number(),
+    average_heartrate: z.number().optional(),
     max_heartrate: z.number().optional(),
     elev_high: z.number().optional(),
     elev_low: z.number().optional()

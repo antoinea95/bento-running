@@ -1,7 +1,8 @@
 .chart {
 
     &-container {
-        @include flexbox(column, center, flex-start);
+        height: 100%;
+        @include flexbox(column, center, center);
     }
 
     &-title {

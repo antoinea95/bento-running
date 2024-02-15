@@ -1,11 +1,17 @@
 .activity {
 
-    &-container {
+    height: 100%;
+    @include flexbox(column, flex-start, center);
+
+    &-title {
+        @include componentTitle;
+    }
+
+    &-card {
         border: 1px solid;
-        width: fit-content;
         padding: 1rem;
         @include flexbox(row, center, center);
-        margin: 2rem;
+        margin: 1rem;
         border-radius: 2rem;
     }
 
@@ -44,12 +50,12 @@
                 h4 {
                     text-transform: uppercase;
                     font-weight: 700;
-                    font-size: 1.5rem;
+                    font-size: 1.3rem;
                     @include flexbox(row, center, center);
                 }
 
                 p {
-                    font-size: 1.5rem;
+                    font-size: 1.3rem;
                 }
             }
         }
