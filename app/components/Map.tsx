@@ -5,10 +5,12 @@ import polyline from "@mapbox/polyline";
 import { LatLngExpression, LatLngTuple } from "leaflet";
 import { MapContainer, Polyline, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import { useIsClient } from "../hooks";
 
 export default function Map({ sumPolyline}: { sumPolyline: string}) {
-    const [center, setCenter] = useState<LatLngExpression | undefined>(undefined);
 
+
+    const [center, setCenter] = useState<LatLngExpression | undefined>(undefined);
 
     useEffect(() => {
         const polylinePoints = polyline.decode(sumPolyline);
@@ -38,6 +40,12 @@ export default function Map({ sumPolyline}: { sumPolyline: string}) {
 
         setCenter(calculatedCenter);
     }, [sumPolyline]);
+
+    const isClient = useIsClient();
+
+    if(!isClient) {
+      return <p>Loading ...</p>
+    }
 
     const options = { color: '#fc4c01' };
 

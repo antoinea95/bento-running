@@ -1,11 +1,11 @@
 
 import { fetchStravaStat} from "@/app/lib/strava"
-import DataCard from "../ui/DataCard";
 import { Gauge } from "lucide-react";
+import StatCard from "../ui/StatCard";
 
 export default async function Stats() {
 
-    const stats = await fetchStravaStat()
+    // const stats = await fetchStravaStat()
 
     const mockedStats = {
         recent_run_totals: {
@@ -32,15 +32,11 @@ export default async function Stats() {
 
 
     return (
-        <article className="stats-container">
-            <h2 className="stats-title">
-                <Gauge color="#fc4c01" style={{marginRight: "1rem"}} />
-                Global stats
-            </h2>
-            <DataCard data={stats.recent_run_totals} title={"Last 4 weeks"} />
-            <DataCard data={stats.ytd_run_totals} title={"This year"} />
-            <DataCard data={stats.all_run_totals} title={"All times"} />
-        </article>
+        <>
+            <StatCard data={mockedStats.recent_run_totals} title={"Last 4 weeks"} />
+            <StatCard data={mockedStats.ytd_run_totals} title={"This year"} />
+            <StatCard data={mockedStats.all_run_totals} title={"All times"} />
+        </>
     )
 
 }

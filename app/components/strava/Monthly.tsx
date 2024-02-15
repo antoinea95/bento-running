@@ -6,8 +6,8 @@ import { fetchAllActivities } from "@/app/lib/strava";
 
 export default async function Monthly() {
 
-    const activities = await fetchAllActivities();
-    const monthly = calculateMonthlyTotalRuns(activities);
+    // const activities = await fetchAllActivities();
+    // const monthly = calculateMonthlyTotalRuns(activities);
 
     const monthlyMock = [
         {date: "Jan.", kilometers: 101},
@@ -30,7 +30,7 @@ export default async function Monthly() {
                 <Medal color="#fc4c01" style={{marginRight: "1rem"}}/>
                 This year
             </h2>
-            <MonthChart data={monthly} />
+            <MonthChart data={monthlyMock} />
         </section>
     )
 

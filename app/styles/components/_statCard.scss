@@ -1,10 +1,14 @@
-.data-card {
-    position: relative;
-    padding: 1rem;
+.stat-card {
+
+    &_container {
+        @include flexbox(column, center, flex-start);
+    }
+
 
     &_title {
         @include componentTitle;
         @include flexbox(row, center, center);
+        margin: 0 auto 2rem auto;
     }
 
     &_category {

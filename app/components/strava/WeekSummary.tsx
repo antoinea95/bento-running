@@ -6,8 +6,8 @@ import { Flame } from "lucide-react";
 export default async function WeekSummary() {
 
     const {previousWeekEpoch} = getEpochTime(new Date())
-    const activities = await fetchStravaActivities('athlete/activities', {page: 1, per_page: 200, after: previousWeekEpoch})
-    const weekSummary = getWeekSummary(activities)
+    // const activities = await fetchStravaActivities('athlete/activities', {page: 1, per_page: 200, after: previousWeekEpoch})
+    // const weekSummary = getWeekSummary(activities)
 
     const weekMock = {
         distance: "30.34km",
@@ -22,10 +22,10 @@ export default async function WeekSummary() {
                 This week
             </h2>
             <div className="summary-content">
-                {Object.keys(weekSummary).map((key) => (
+                {Object.keys(weekMock).map((key) => (
                     <div className="summary-content_item" key={key}>
                         <h3>{key}</h3>
-                        <p>{weekSummary[key as keyof typeof weekSummary]}</p>
+                        <p>{weekMock[key as keyof typeof weekMock]}</p>
                     </div>
                 ))}
             </div>

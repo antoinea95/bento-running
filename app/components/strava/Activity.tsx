@@ -1,11 +1,13 @@
 import { Flame } from "lucide-react";
-import ActivityCard from "../components/ActivityCard";
-import LoadMore from "../components/ui/LoadMore";
-import { fetchStravaActivities } from "../lib/strava";
+import ActivityCard from "../ActivityCard";
+import LoadMore from "../ui/LoadMore";
+import { fetchStravaActivities } from "../../lib/strava";
+import { activitiesMocked } from "@/app/utils/helpers";
 
 export default async function Activity() {
 
-    const activities = await fetchStravaActivities("athlete/activities", {page: 1, per_page: 30});;
+    // const activities = await fetchStravaActivities("athlete/activities", {page: 1, per_page: 30});
+    const activities = activitiesMocked;
     const sortActivities = activities.sort((a, b) =>  {
         return +new Date(b.start_date_local) - +new Date(a.start_date_local);
     });
@@ -20,7 +22,7 @@ export default async function Activity() {
             {sortActivities.map((activity) => (
                <ActivityCard activity={activity} key={activity.id}/>
             ))}
-            <LoadMore />
+            {/* <LoadMore /> */}
         </section>
     )
 }

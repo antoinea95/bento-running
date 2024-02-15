@@ -4,7 +4,7 @@ import Stats from "../components/strava/Stats";
 import WeekSummary from "../components/strava/WeekSummary";
 import Weekly from "../components/strava/Weekly";
 import Monthly from "../components/strava/Monthly";
-import Activity from "../activity/Activity";
+import Activity from "../components/strava/Activity";
 
 export default async function Dashboard() {
 
@@ -17,17 +17,15 @@ export default async function Dashboard() {
               <WeekSummary />
           </section>
           <section className="dashboard-item">
-          <Monthly /> 
+            <Weekly />
           </section>
           <section className="dashboard-item">
-            <Weekly />
+          <Monthly /> 
           </section>
           <section className="dashboard-item">
           <Activity />
           </section>
-          <section className="dashboard-item">
           <Stats />
-          </section>
         </article>
     </>
   );

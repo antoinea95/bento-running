@@ -1,7 +1,7 @@
 .header {
-    background-color: $primary;
+    background-color: $secondary;
     @include flexbox(row, space-between, center);
-    padding: 1rem;
+    padding: 1rem 5rem;
     height: 6rem;
     width: 100%;
 

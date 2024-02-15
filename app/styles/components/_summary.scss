@@ -1,7 +1,6 @@
 .summary {
 
     &-container {
-        height: 100%;
         @include flexbox(column, center, center);
     }
 

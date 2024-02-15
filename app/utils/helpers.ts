@@ -168,10 +168,6 @@ export const getWeekSummary = (activities: StravaActivitiesType) => {
 
 }
 
-export const getTotalMonth = (activies: StravaActivitiesType) => {
-
-}
-
 
 export const activitiesMocked : StravaActivitiesType = [
   {

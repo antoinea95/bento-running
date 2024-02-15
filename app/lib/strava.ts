@@ -37,7 +37,6 @@ export const fetchStravaStat = async() => {
     }
 
     const rawData = await response.json();
-    console.log(rawData);
     const stats = StravaStatSchema.parse(rawData);
 
     return stats
@@ -77,7 +76,7 @@ export const fetchStravaActivities = async (endpoint: string, params?: any) => {
 
     const rawData = await response.json();
     const activities = StravaActivitiesSchema.parse(rawData);
-    const runs = activities.filter((activity) => activity.sport_type === "Run");
+    const runs = activities.filter((activity) => activity.sport_type === "Run" || activity.sport_type === "TrailRun");
 
     return runs;
   } catch (error) {
