@@ -50,7 +50,7 @@ async function refreshAccessToken(token: JWT) {
     }
 }
 
-export const authOptions: NextAuthOptions = {
+const authOptions: NextAuthOptions = {
   secret: process.env.NEXTAUTH_URL as string,
   providers: [
     StravaProvider({
