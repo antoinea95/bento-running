@@ -2,7 +2,7 @@ import { z } from "zod"
 
 // athlete profile
 export const StravaProfileSchema = z.object({
-    username: z.string(),
+    username: z.string().nullable(),
     firstname: z.string(),
     lastname: z.string(),
     bio: z.string().nullable(),
