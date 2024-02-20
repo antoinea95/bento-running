@@ -1,6 +1,7 @@
 "use server";
 
 import { getServerSession } from "next-auth";
+import { authOptions } from "../api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 import { StravaActivitiesSchema, StravaActivitiesType, StravaProfileSchema, StravaStatSchema } from "../types/schema";
 import { getEpochTime } from "../utils/helpers";
@@ -8,7 +9,7 @@ import { getEpochTime } from "../utils/helpers";
 const BASE_URL = "https://www.strava.com/api/v3";
 
 const getStravaSession = async () => {
-  const session = await getServerSession();
+  const session = await getServerSession(authOptions);
 
   if (!session) {
     redirect("/");

@@ -1,13 +1,14 @@
 
 import SigninButton from "./components/auth/signinBtn"
 import { getServerSession } from "next-auth"
+import { authOptions } from "./api/auth/[...nextauth]/route"
 import { redirect } from "next/navigation";
 import Image from "next/image";
 
 export default async function LoginPage() {
 
     //check if user is logged
-    const session = await getServerSession();
+    const session = await getServerSession(authOptions);
 
     if(session) {
         redirect("/dashboard")
