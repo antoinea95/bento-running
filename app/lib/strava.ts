@@ -1,7 +1,7 @@
 "use server";
 
 import { getServerSession } from "next-auth";
-import { authOptions } from "../api/auth/[...nextauth]/route";
+import { authOptions } from "../utils/auth";
 import { redirect } from "next/navigation";
 import { StravaActivitiesSchema, StravaActivitiesType, StravaProfileSchema, StravaStatSchema } from "../types/schema";
 import { getEpochTime } from "../utils/helpers";
