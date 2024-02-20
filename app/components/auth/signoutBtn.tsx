@@ -11,7 +11,7 @@ export default function SignoutButton() {
         onClick={() => signOut({callbackUrl: "/"})}
         className="signout-btn"
         >
-            <LogOut color="#ffffff" width={30} height={30} />
+            <LogOut className="header-profile_logout" />
         </button>
     )
 }

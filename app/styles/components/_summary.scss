@@ -1,20 +1,13 @@
 .summary {
 
-    &-container {
-        @include flexbox(column, center, center);
-    }
-
-    &-title {
-        @include componentTitle;
-    }
-
-    &-content {
         @include flexbox(row, space-between, center);
+        width: 98%;
+        padding: 1rem 0;
 
-        &_item {
+        &-item {
+            @include flexbox(column, center, center);
+            flex: 1;
             border-right: 1px solid;
-            @include flexbox(column, flex-start, flex-start);
-            padding: 0 2rem;
 
             &:last-child {
                 border: none;
@@ -22,16 +15,15 @@
 
 
             h3 {
-                font-weight: 700;
                 text-transform: uppercase;
-                font-size: 1.8rem;
+                font-size: 1.3rem;
+                line-height: 0.5rem;
+                color: $primary;
             }
 
             p {
-                color: $primary;
+                font-size: 2rem;
                 font-weight: 900;
-                font-size: 1.6rem;
             }
         }
-    }
 }

@@ -1,23 +1,54 @@
 .header {
-    background-color: $secondary;
     @include flexbox(row, space-between, center);
-    padding: 1rem 5rem;
-    height: 6rem;
+    padding: 1rem 3rem;
+    height: 10rem;
     width: 100%;
-
     p {
         text-transform: uppercase;
-        color: white;
+        color: $primary;
         font-size: 2rem;
         font-weight: 900;
     }
 
+    &-credits {
+        background-color: $primary;
+        padding: 1rem 2rem;
+        border-radius: 1rem;
+        @include flexbox(row, center, center);
+
+        p {
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
+            color: white;
+        }
+
+        img {
+            width: 5rem; 
+        }
+    }
+
     &-profile {
         @include flexbox(row, space-between, center);
+        width: 23%;
+        max-width: 30rem;
 
-        &_img {
+        &_image {
+            width: 4rem;
+            height: 4rem;
             border-radius: 50%;
-            margin-right: 1rem;
+            border: 1px solid $primary;
+            @include flexbox(row, center, center);
+            overflow: hidden;
+
+            img {
+                object-fit: cover;
+            }
+        }
+
+        &_logout {
+            width: 2.3rem;
+            height: 2.3rem;
+            color: $primary;
         }
     }
 }

@@ -5,11 +5,12 @@ import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { Spinner } from "./Spinner";
 import { fetchStravaActivities } from "@/app/lib/strava";
-import ActivityCard from "../ActivityCard";
+import ActivityCard from "./ActivityCard";
 
 export default function LoadMore() {
   const [activities, setActivities] = useState<StravaActivitiesType>([]);
   const [pageLoaded, setPageLoaded] = useState(1);
+  const [allPagesLoaded, setAllPagesLoaded] = useState(false);
 
   const { ref, inView } = useInView();
 
@@ -23,29 +24,36 @@ export default function LoadMore() {
     const newActivitiesSort = newActivities.sort((a, b) => {
       return +new Date(b.start_date_local) - +new Date(a.start_date_local);
     });
-    setActivities((prevActivities: StravaActivitiesType) => [
-      ...prevActivities,
-      ...newActivitiesSort,
-    ]);
-    setPageLoaded(nextPage);
+    if (newActivitiesSort.length === 0) {
+      setAllPagesLoaded(true);
+    } else {
+      setActivities((prevActivities: StravaActivitiesType) => [
+        ...prevActivities,
+        ...newActivitiesSort,
+      ]);
+      setPageLoaded(nextPage);
+    }
   };
 
   useEffect(() => {
     if (inView) {
       loadMoreActivities();
     }
-  }, [inView]);
+  }, [inView, allPagesLoaded]);
 
-  console.log(activities.length)
 
   return (
     <>
       {activities.map((activity) => (
         <ActivityCard activity={activity} key={activity.id} />
       ))}
-        <div ref={ref}>
+       {!allPagesLoaded ? (
+        <div ref={ref} className="activity-loading">
           <Spinner />
         </div>
+      ) : <div className="activity-loading">
+        <p className="activity-loading_spinner"> No more activities</p>
+        </div>}
     </>
   );
 }

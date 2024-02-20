@@ -1,10 +1,5 @@
 .stats {
 
-    &-container {
-        height: 100%;
-        @include flexbox(column, center, center);
-    }
-
     &-title {
         @include componentTitle;
     }

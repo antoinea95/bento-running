@@ -1,34 +1,27 @@
-.stat-card {
-
-    &_container {
-        @include flexbox(column, center, flex-start);
-    }
+.stats{
 
 
-    &_title {
-        @include componentTitle;
-        @include flexbox(row, center, center);
-        margin: 0 auto 2rem auto;
-    }
+    &-content {
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        gap: 2rem;
 
-    &_category {
-        @include flexbox(row, flex-start, center);
-        padding: 0 2rem;
+        &_item {
+                @include flexbox(row, flex-start, center);
+                font-weight: 900;
+                font-size: 1.6rem;
+                text-transform: uppercase;
+                white-space: nowrap;
+                width: 100%;
 
-        &_title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            min-width: 13rem;
+                &_icon {
+                    width: 1.8rem;
+                    height: 1.8rem;
+                    margin-right: 0.5rem;
+                    color: $primary;
+                }
         }
-
-        &_content {
-            @include flexbox(row, flex-end, center);
-            color: $primary;
-            font-weight: 900;
-            font-size: 1.6rem;
-        }
-
+       
     }
     
 }

@@ -1,63 +1,119 @@
 .activity {
 
-    height: 100%;
-    @include flexbox(column, flex-start, center);
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+        -webkit-mask-image: linear-gradient(to bottom, white 80%,transparent 100%);
+        mask-image: linear-gradient(to bottom,white 80%, transparent 100%);
 
-    &-title {
-        @include componentTitle;
-    }
+        &-last {
+            width: 100%;
+            height: fit-content;
+            mask-image: none;
+            -webkit-mask-image: none;
+
+            .activity-card {
+                margin: 0 auto;
+            }
+
+        }
+
+
+
+        &-loading {
+            width: 100%;
+            height: 3rem;
+            @include flexbox(row, center, center);
+
+            &_spinner {
+                text-transform: uppercase;
+                font-weight: 900;
+                font-size: 2rem;
+            }
+        }
+
 
     &-card {
-        padding: 1rem;
-        @include flexbox(row, center, center);
-        margin: 1rem;
-        border-radius: 2rem;
-        box-shadow: 0 0 3px 1px rgba($color: #000000, $alpha: 0.2);
-    }
+        @include flexbox(row, space-between, flex-start);
+        width: 100%;
+        height: fit-content;
+        margin: 0 auto 2rem auto;
 
-    &-map {
-        border-radius: 1rem;
-        width: fit-content;
-        overflow: hidden;
-    }
-
-    &-body {
-        min-height: 150px;
-        margin-left: 2rem;
-        
-        &_title {
-            margin-bottom: 2rem;
-            
-            h3 {
-                font-size: 2rem;
-                text-transform: uppercase;
-                font-weight: 700;
-            }
-
-            p {
-                font-size: 1.2rem;
-            }
+        &_icon {
+            width: 1.6rem;
+            height: 1.6rem;
+            color: $primary;
         }
 
-        &_content {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
+        .heart {
+            fill: red;
+        }
 
-            &-item {
-                @include flexbox(column, flex-start, flex-start);
+        &_map {
+            border-radius: 1rem;
+            min-width: 15rem;
+            width: 40%;
+            height: 150px;
+            overflow: hidden;
+            z-index: 0;
 
-                h4 {
+            &_placeholder {
+                width: 100%;
+                height: 100%;
+                background-color: $primary;
+                @include flexbox(row, center, center);
+
+                .placeholder-icon {
+                    width: 5rem;
+                    height: 5rem;
+                    color: white;
+                }
+            }
+        }
+    
+        &_body {
+            min-height: 150px;
+            width: 55%;
+            
+            &_title {
+                margin-bottom: 1rem;
+                
+                h3 {
+                    font-size: 2rem;
                     text-transform: uppercase;
                     font-weight: 700;
-                    font-size: 1.3rem;
-                    @include flexbox(row, center, center);
+                    width: fit-content;
+                    line-height: 2rem;
                 }
-
+    
                 p {
-                    font-size: 1.3rem;
+                    font-size: 1.4rem;
+                }
+            }
+    
+            &_content {
+                display: grid;
+                grid-template-columns: repeat(auto-fill,minmax(7rem, 1fr));
+                gap: 0.5rem;
+    
+                &_item {
+                    @include flexbox(column, flex-start, flex-start);
+    
+                    h4 {
+                        text-transform: uppercase;
+                        font-weight: 700;
+                        font-size: 1.3rem;
+                        @include flexbox(row, center, center);
+                    }
+    
+                    p {
+                        font-size: 1.3rem;
+                        font-weight: 900;
+                        white-space: nowrap;
+                    }
                 }
             }
         }
     }
+
 }

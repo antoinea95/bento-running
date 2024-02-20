@@ -5,10 +5,27 @@ body {
     overflow-x: hidden;
     height: auto;
     max-width: 1440px;
+    background-color: $secondary;
 }
 
 h1 {
     font-size: 2rem;
     font-weight: 900;
     text-transform: uppercase;
+}
+
+.icon {
+
+    color: white;
+    width: 1.8rem;
+    height: 1.8rem;
+
+    &-container {
+        border-radius: 50%;
+        background-color: $primary;
+        width: 3rem;
+        height: 3rem;
+        @include flexbox(row, center, center);
+        margin-right: 1rem;
+    }
 }

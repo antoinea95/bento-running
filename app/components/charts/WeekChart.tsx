@@ -1,18 +1,20 @@
 "use client";
 
-import { useIsClient } from "@/app/hooks";
+import { useIsClient } from "@/app/utils/hooks";
 import { StravaTotal } from "@/app/types/schema";
 import { Area, AreaChart, Tooltip, TooltipProps, XAxis, YAxis } from "recharts";
 import {
   NameType,
   ValueType,
 } from "recharts/types/component/DefaultTooltipContent";
+import { Cairo } from "next/font/google";
+const cairo = Cairo({ subsets: ["latin"], weight: ["400", "700", "900"] });
 
 export const WeekChart = ({ data }: { data: StravaTotal[] }) => {
   const isClient = useIsClient();
 
   if (!isClient) {
-    return <p>Loading ...</p>;
+    return <p className="chart-loader">Loading ...</p>;
   }
 
   const CustomTooltip = ({
@@ -23,7 +25,7 @@ export const WeekChart = ({ data }: { data: StravaTotal[] }) => {
     if (active) {
       return (
         <div className="chart-tooltip">
-          <p className="chart-tooltip_label">{`${payload?.[0].value} KM`}</p>
+          <p className={cairo.className}>{`${payload?.[0].value} KM`}</p>
         </div>
       );
     }
@@ -34,9 +36,9 @@ export const WeekChart = ({ data }: { data: StravaTotal[] }) => {
   return (
     <AreaChart
       data={data}
-      margin={{ top: 0, right: 60, left: 5, bottom: 0 }}
+      margin={{ top: 0, right: 60, left: 5, bottom: 10 }}
       width={420}
-      height={130}
+      height={100}
     >
       <defs>
         <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="1">

@@ -1,7 +1,9 @@
 "use client";
 
-import { useIsClient } from "@/app/hooks";
+import { useIsClient } from "@/app/utils/hooks";
 import { StravaTotal } from "@/app/types/schema";
+import { Cairo } from "next/font/google";
+const cairo = Cairo({ subsets: ["latin"], weight: ["400", "700", "900"] });
 import { BarChart, Bar, Tooltip, TooltipProps, XAxis, YAxis } from "recharts";
 import {
   NameType,
@@ -12,7 +14,7 @@ export const MonthChart = ({ data }: { data: StravaTotal[] }) => {
   const isClient = useIsClient();
 
   if (!isClient) {
-    return <p>Loading ...</p>;
+    return <p className="chart-loader">Loading ...</p>;
   }
 
   const CustomTooltip = ({
@@ -23,7 +25,7 @@ export const MonthChart = ({ data }: { data: StravaTotal[] }) => {
     if (active) {
       return (
         <div className="chart-tooltip">
-          <p className="chart-tooltip_label">{`${payload?.[0].value} KM`}</p>
+          <p className={cairo.className}>{`${payload?.[0].value} KM`}</p>
         </div>
       );
     }
@@ -34,9 +36,9 @@ export const MonthChart = ({ data }: { data: StravaTotal[] }) => {
   return (
     <BarChart
       data={data}
-      margin={{ top: 0, right: 60, left: 5, bottom: 0 }}
-      width={420}
-      height={130}
+      margin={{ top: 0, right: 40, left: 5, bottom: 10 }}
+      width={350}
+      height={160}
     >
       <YAxis
         stroke="#fc4c01"
