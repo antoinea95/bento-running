@@ -22,7 +22,7 @@
     &-profile {
         @include flexbox(row, space-between, center);
         width: 95%;
-        max-width: 8rem;
+        max-width: 9rem;
 
         &_image {
             width: 4rem;

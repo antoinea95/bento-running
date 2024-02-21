@@ -4,7 +4,6 @@
     grid-template-columns: repeat(auto-fill,minmax(8rem, auto));    
     gap: 2rem;
     width: 98%;
-    height: 80%;
 
 
     @include responsive(small) {
