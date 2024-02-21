@@ -24,7 +24,6 @@ const fetchStravaData = async (endpoint: string, params?: any) => {
   const accessToken = session.accessToken;
 
   try {
-    await new Promise((resolve) => setTimeout(resolve, 3000));
     let url = `${BASE_URL}/${endpoint}`;
     if (params) {
       const queryString = Object.keys(params)
