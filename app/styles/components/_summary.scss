@@ -1,13 +1,24 @@
 .summary {
 
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(8rem, auto));    
+    gap: 2rem;
+    width: 98%;
+    height: 80%;
+
+
+    @include responsive(small) {
         @include flexbox(row, space-between, center);
-        width: 98%;
-        padding: 1rem 0;
+    }
+    
 
         &-item {
             @include flexbox(column, center, center);
             flex: 1;
-            border-right: 1px solid;
+
+            @include responsive(medium) {
+                border-right: 1px solid;
+            }
 
             &:last-child {
                 border: none;
@@ -24,6 +35,7 @@
             p {
                 font-size: 2rem;
                 font-weight: 900;
+                white-space: nowrap;
             }
         }
 }

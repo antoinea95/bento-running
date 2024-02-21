@@ -5,6 +5,7 @@ import { authOptions } from "../utils/auth";
 import { redirect } from "next/navigation";
 import { StravaActivitiesSchema, StravaActivitiesType, StravaProfileSchema, StravaStatSchema } from "../types/schema";
 import { getEpochTime } from "../utils/helpers";
+import { resolve } from "path";
 
 const BASE_URL = "https://www.strava.com/api/v3";
 
@@ -23,6 +24,7 @@ const fetchStravaData = async (endpoint: string, params?: any) => {
   const accessToken = session.accessToken;
 
   try {
+    await new Promise((resolve) => setTimeout(resolve, 3000));
     let url = `${BASE_URL}/${endpoint}`;
     if (params) {
       const queryString = Object.keys(params)

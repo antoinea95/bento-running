@@ -1,8 +1,17 @@
 .header {
+
+    @include box;
     @include flexbox(row, space-between, center);
-    padding: 1rem 3rem;
-    height: 10rem;
-    width: 100%;
+    width: 95%;
+    max-width: 75rem;
+    margin: 3rem auto 0 auto;
+    height: 8rem;
+    padding: 1rem 2rem;
+
+    @include responsive(medium) {
+        max-width: none;
+    }
+  
     p {
         text-transform: uppercase;
         color: $primary;
@@ -10,27 +19,10 @@
         font-weight: 900;
     }
 
-    &-credits {
-        background-color: $primary;
-        padding: 1rem 2rem;
-        border-radius: 1rem;
-        @include flexbox(row, center, center);
-
-        p {
-            font-size: 1.2rem;
-            margin-right: 0.5rem;
-            color: white;
-        }
-
-        img {
-            width: 5rem; 
-        }
-    }
-
     &-profile {
         @include flexbox(row, space-between, center);
-        width: 23%;
-        max-width: 30rem;
+        width: 95%;
+        max-width: 8rem;
 
         &_image {
             width: 4rem;

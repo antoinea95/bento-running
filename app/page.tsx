@@ -18,7 +18,7 @@ export default async function LoginPage() {
         <article className="signin">
             <div className="signin-container">
                 <section className="signin-image">
-                    <Image src="/images/screen.png" width={1000} height={1000} alt="Screen" />
+                    <Image src="/images/screen.png" width={1000} height={500} alt="Screen" />
                 </section>
                 <div className="signin-content">
                 <section className="signin-title">

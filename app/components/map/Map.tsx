@@ -59,7 +59,7 @@ export default function Map({ sumPolyline }: { sumPolyline: string }) {
       center={center}
       zoom={12}
       className="map"
-      style={{ width: "100%", height: "100%" }}
+      style={{ width: "100%", height:"100%"}}
       zoomControl={false}
     >
       <TileLayer

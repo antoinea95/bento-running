@@ -34,20 +34,20 @@ export default async function Dashboard() {
           <section className="dashboard-item">
             <h2 className="dashboard-item_title">
               <div className="icon-container">
+                <HandshakeIcon className="icon" />
+              </div>
+              Last activity
+            </h2>
+            <LastActivity />
+          </section>
+          <section className="dashboard-item">
+            <h2 className="dashboard-item_title">
+              <div className="icon-container">
                 <LineChart className="icon" />
               </div>
               Trend
             </h2>
             <Weekly />
-          </section>
-          <section className="dashboard-item">
-            <h2 className="dashboard-item_title">
-              <div className="icon-container">
-                <Medal className="icon" />
-              </div>
-              This year
-            </h2>
-            <Monthly />
           </section>
           <section className="dashboard-item">
             <h2 className="dashboard-item_title">
@@ -62,11 +62,11 @@ export default async function Dashboard() {
           <section className="dashboard-item">
             <h2 className="dashboard-item_title">
               <div className="icon-container">
-                <HandshakeIcon className="icon" />
+                <Medal className="icon" />
               </div>
-              Last activity
+              This year
             </h2>
-            <LastActivity />
+            <Monthly />
           </section>
           <section className="dashboard-item">
             <h2 className="dashboard-item_title">

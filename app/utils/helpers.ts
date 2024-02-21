@@ -164,9 +164,9 @@ export const getWeekSummary = (activities: StravaActivitiesType) => {
   let totalHR = 0;
 
   activities.forEach((activity: StravaActivitieType) => {
-    totalKilometers+=Number((activity.distance / 1000).toFixed(2));
+    totalKilometers+=Number((activity.distance / 1000));
     totalSeconds+=activity.moving_time;
-    totalElevation+=Number(activity.total_elevation_gain.toFixed(2));
+    totalElevation+=Number(activity.total_elevation_gain);
     totalSpeed+=activity.average_speed;
     if(activity.average_heartrate) totalHR+= activity.average_heartrate
   })
@@ -177,9 +177,9 @@ export const getWeekSummary = (activities: StravaActivitiesType) => {
 
   return {
     activities: activities.length,
-    distance: `${totalKilometers} km`,
+    distance: `${Math.round(totalKilometers)} km`,
     time: totalTime,
-    elevation: `${totalElevation} m`,
+    elevation: `${Math.round(totalElevation)} m`,
     speed: averageSpeed, 
     heartrate: `${averageHR} bpm`
   }

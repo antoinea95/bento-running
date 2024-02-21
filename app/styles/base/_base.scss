@@ -4,6 +4,8 @@ html {
 body {
     overflow-x: hidden;
     height: auto;
+    width: 95vw;
+    margin: 0 auto;
     max-width: 1440px;
     background-color: $secondary;
 }
@@ -27,5 +29,24 @@ h1 {
         height: 3rem;
         @include flexbox(row, center, center);
         margin-right: 1rem;
+    }
+}
+
+.credits {
+    background-color: $primary;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    @include flexbox(row, center, center);
+    width: 20rem;
+    margin: 2rem auto;
+
+    p {
+        font-size: 1.2rem;
+        margin-right: 0.5rem;
+        color: white;
+    }
+
+    img {
+        width: 5rem; 
     }
 }

@@ -2,7 +2,7 @@
 
 import { useIsClient } from "@/app/utils/hooks";
 import { StravaTotal } from "@/app/types/schema";
-import { Area, AreaChart, Tooltip, TooltipProps, XAxis, YAxis } from "recharts";
+import { Area, AreaChart, ResponsiveContainer, Tooltip, TooltipProps, XAxis, YAxis } from "recharts";
 import {
   NameType,
   ValueType,
@@ -34,11 +34,10 @@ export const WeekChart = ({ data }: { data: StravaTotal[] }) => {
   };
 
   return (
+    <ResponsiveContainer minWidth={380} height={100} width="100%">
     <AreaChart
       data={data}
       margin={{ top: 0, right: 60, left: 5, bottom: 10 }}
-      width={420}
-      height={100}
     >
       <defs>
         <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="1">
@@ -75,5 +74,6 @@ export const WeekChart = ({ data }: { data: StravaTotal[] }) => {
         fill="url(#gradient)"
       />
     </AreaChart>
+    </ResponsiveContainer>
   );
 };

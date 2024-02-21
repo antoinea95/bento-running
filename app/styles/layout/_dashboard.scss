@@ -1,22 +1,56 @@
 .dashboard {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: 0.5fr 0.5fr 1fr 1fr 1fr 1fr;
-    gap: 2rem;
-    padding: 1rem 3rem 3rem 3rem;
     width: 100%;
-    height: calc(100vh - 10rem);
-    margin: 0 auto;
+    max-width: 75rem;
+    margin: 2rem auto;
+    min-height: 80vh;
+
+
+    @include responsive(small) {
+        width: 95%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(5, auto);
+        grid-template-areas: 
+        "summary summary"
+        "last last"
+        "trend trend"
+        "activities activities"
+        "year all";
+        gap: 2rem;
+    }
+
+    @include responsive(medium) {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(4, auto);
+        grid-template-areas: 
+        "summary summary"
+        "last trend"
+        "activities year"
+        "activities all";
+        max-width: none;
+    }
+    
+    @include responsive(large) {
+        grid-template-columns: 1.5fr 1.5fr 1fr;
+        grid-template-areas: 
+        "summary summary summary"
+        "last activities year"
+        "last activities year"
+        "trend activities all";
+    }
 
     &-skeleton {
-        grid-template-rows: 1fr 0.5fr 0.5fr 0.5fr 1fr 0.5fr;
-        grid-template-columns: 1.5fr 0.5fr 0.5fr 0.5fr 0.5fr 1fr;
-        animation: loading 1.5s infinite ease-in-out;
+        animation: loading 1.5s infinite ease-in-out;        
+
+        .dashboard-item {
+            min-height: 200px;
+        }
     }
 
     &-error {
         @include box;
-        width: 50vw;
+        width: 90%;
+        max-width: 75rem;
         margin: 0 auto;
         height: 30rem;
         position: absolute;
@@ -26,10 +60,11 @@
         @include flexbox(column, center, center);
 
         h2 {
-            font-size: 4rem;
+            font-size: 3.5rem;
             font-weight: 900;
             text-transform: uppercase;
             color: $primary;
+            text-align: center;
         }
 
         button {
@@ -50,45 +85,51 @@
 
     &-item {
         @include box;
-        margin: 0;
         @include flexbox(column, flex-start, center);
+        width: 95%;
+        margin: 2rem auto;
+
+
+        @include responsive(small) {
+            width: 100%;
+            margin: 0 auto;
+            overflow: hidden;
+        }
         
 
         &_title {
             @include componentTitle;
-            margin: 1rem 0 2rem 0;
+            margin: 1rem 0 1.5rem 1rem;
+
+            @include responsive(medium) {
+                margin: 1rem 0 2rem 0;
+            }
         }
 
-        &:nth-child(1) {
-            grid-column: 1/7;
-            grid-row: 1/2;
-        }
-
-        &:nth-child(2) {
-            grid-column: 1/2;
-            grid-row: 5/7;
-        }
-
-        &:nth-child(3) {
-            grid-column: 5/7;
-            grid-row: 2/5;
-        }
-
-        &:nth-child(4) {
-            grid-column: 2/5;
-            grid-row: 2/7;
-            justify-content: flex-start;
-        }
-
-        &:nth-child(5) {
-            grid-column: 1/2;
-            grid-row: 2/5;
-        }
-
-        &:nth-child(6) {
-            grid-column: 5/7;
-            grid-row: 5/7;
-        }
+            &:nth-child(1) {
+                grid-area: summary;
+            }
+    
+            &:nth-child(2) {
+                grid-area: last
+            }
+    
+            &:nth-child(3) {
+                grid-area: trend
+            }
+    
+            &:nth-child(4) {
+                grid-area: activities;
+                justify-content: flex-start;
+            }
+    
+            &:nth-child(5) {
+                grid-area: year;
+            }
+    
+            &:nth-child(6) {
+                grid-area: all;
+            }
 
     }
 }

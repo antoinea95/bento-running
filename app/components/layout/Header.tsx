@@ -12,16 +12,7 @@ export default async function Header() {
         <p>Welcome {profile.firstname}</p>
       </Suspense>
 
-      <div className="header-profile">
-        <div className="header-credits">
-          <p>Powered by</p>
-          <Image
-            src="/images/strava-logo.webp"
-            width={30}
-            height={30}
-            alt="Strava logo"
-          />
-        </div>
+        <div className="header-profile">
         <div className="header-profile_image">
           <Suspense fallback={<div></div>}>
             <Image
@@ -34,7 +25,7 @@ export default async function Header() {
           </Suspense>
         </div>
         <SignoutButton />
-      </div>
+        </div>
     </header>
   );
 }
