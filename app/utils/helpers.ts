@@ -181,6 +181,6 @@ export const getWeekSummary = (activities: StravaActivitiesType) => {
     time: totalTime,
     elevation: `${Math.round(totalElevation)} m`,
     speed: averageSpeed, 
-    heartrate: `${averageHR} bpm`
+    heartrate: `${averageHR > 0 ? averageHR : "--"} bpm`
   }
 };

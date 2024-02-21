@@ -77,9 +77,9 @@ export default function ActivityCard({
             <div className="activity-card_body_content_item">
               <h4>
                 {" "}
-                <Footprints className="activity-card_icon" /> Cadence
+                <Footprints className="activity-card_icon" />
               </h4>
-              <p>{activity.average_cadence}</p>
+              <p>{Math.round(activity.average_cadence * 2)}</p>
             </div>
           ) : null}
         </div>
