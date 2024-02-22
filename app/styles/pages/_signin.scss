@@ -1,5 +1,5 @@
 .signin {
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     @include flexbox(row, center, center);
 
@@ -15,7 +15,7 @@
         }
 
         @include responsive(medium) {
-            max-width: none;
+            max-width: 100rem;
         }
        
     }
@@ -26,7 +26,10 @@
         width: 100%;
 
         @include responsive(small) {
-            width: 45%;
+            width: 47%;
+            height: 100%;
+            border-left: 2px solid $primary;
+            padding-left: 6rem;
         }
     }
 
@@ -60,12 +63,12 @@
 
     &-image {
         @include flexbox(row, center, center);
-        border-radius: 1rem;
+        border-radius: 2rem;
         border: 1px solid $primary;
         overflow: hidden;
 
         @include responsive(small) {
-            width: 50%;
+            width: 47%;
         }
 
         img {
@@ -76,5 +79,6 @@
 
     &-connect {
         @include flexbox(row, flex-start, center);
+        width: fit-content;
     }
 }

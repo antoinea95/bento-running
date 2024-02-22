@@ -1,6 +1,7 @@
 .header {
 
-    @include box;
+    @include box(white);
+    @include LightBorderGradient;
     @include flexbox(row, space-between, center);
     width: 95%;
     max-width: 75rem;
@@ -22,11 +23,15 @@
     &-profile {
         @include flexbox(row, space-between, center);
         width: 95%;
-        max-width: 9rem;
+        max-width: 13rem;
+
+        @include responsive(small) {
+            max-width: 15rem;
+        }
 
         &_image {
-            width: 4rem;
-            height: 4rem;
+            width: 3.5rem;
+            height: 3.5rem;
             border-radius: 50%;
             border: 1px solid $primary;
             @include flexbox(row, center, center);
@@ -38,9 +43,14 @@
         }
 
         &_logout {
-            width: 2.3rem;
-            height: 2.3rem;
+            width: 2.5rem;
+            height: 2.5rem;
             color: $primary;
         }
     }
+}
+
+[data-theme='dark'] .header {
+    @include box(#041425);
+    @include darkBorderGradient;
 }

@@ -2,6 +2,7 @@ import SignoutButton from "../auth/signoutBtn";
 import Image from "next/image";
 import { fetchStravaProfile } from "../../lib/strava";
 import { Suspense } from "react";
+import { ThemeChanger } from "../ThemeChanger";
 
 export default async function Header() {
   const profile = await fetchStravaProfile();
@@ -24,6 +25,7 @@ export default async function Header() {
             />
           </Suspense>
         </div>
+        <ThemeChanger />
         <SignoutButton />
         </div>
     </header>

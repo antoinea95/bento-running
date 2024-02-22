@@ -48,15 +48,12 @@
     }
 
     &-error {
-        @include box;
+        @include box(white);
+        @include LightBorderGradient;
         width: 90%;
         max-width: 75rem;
         margin: 0 auto;
         height: 30rem;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%,-50%);
         @include flexbox(column, center, center);
 
         h2 {
@@ -84,7 +81,8 @@
     }
 
     &-item {
-        @include box;
+        @include box(white);
+        @include LightBorderGradient;
         @include flexbox(column, flex-start, center);
         width: 95%;
         margin: 2rem auto;
@@ -133,3 +131,14 @@
 
     }
 }
+
+[data-theme='dark'] .dashboard-item {
+    @include box(#041425);
+    @include darkBorderGradient;
+}
+
+[data-theme='dark'] .dashboard-error {
+    @include box(#041425);
+    @include darkBorderGradient;
+}
+

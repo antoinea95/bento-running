@@ -4,6 +4,7 @@ import SessionWrapper from "./providers/SessionWrapper";
 const cairo = Cairo({ subsets: ["latin"], weight: ["400", "700", "900"] });
 import "@/app/styles/main.css";
 import Image from "next/image";
+import { DarkModeProvider } from "./providers/ThemeProvider";
 
 export const metadata: Metadata = {
   title: "Bento Running",
@@ -21,7 +22,8 @@ export default async function RootLayout({
   return (
     <SessionWrapper>
     <html lang="en">
-          <body className={cairo.className}>
+        <body className={cairo.className}>
+        <DarkModeProvider>
         {children}
         <div className="credits">
           <p>Powered by</p>
@@ -32,6 +34,7 @@ export default async function RootLayout({
             alt="Strava logo"
           />
         </div>
+        </DarkModeProvider>
         </body>
     </html>
     </SessionWrapper>

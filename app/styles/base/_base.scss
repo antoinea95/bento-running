@@ -1,13 +1,23 @@
+
+
+
 html {
     font-size: 10px;
 }
+
 body {
     overflow-x: hidden;
     height: auto;
-    width: 95vw;
+    width: 100vw;
     margin: 0 auto;
     max-width: 1440px;
     background-color: $secondary;
+    color: $dark;
+}
+
+[data-theme='dark'] body {
+    background-color: $dark;
+    color: $secondary;
 }
 
 h1 {
@@ -48,5 +58,18 @@ h1 {
 
     img {
         width: 5rem; 
+    }
+}
+
+.theme-btn {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+
+    &_icon {
+        width: 2.5rem;
+        height: 2.5rem;
+        color: $primary;
+        fill: $primary;
     }
 }
