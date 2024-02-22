@@ -637,14 +637,19 @@ h1 {
 }
 .activity-last {
   width: 100%;
-  height: 80%;
+  height: fit-content;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   mask-image: none;
   -webkit-mask-image: none;
-  margin-bottom: 2rem;
+  margin-bottom: 0;
+}
+@media (min-width: 767px) {
+  .activity-last {
+    margin-bottom: 2rem;
+  }
 }
 @media (min-width: 1300px) {
   .activity-last {
@@ -669,8 +674,8 @@ h1 {
 }
 .activity-card {
   width: 90%;
+  height: 280px;
   max-width: 350px;
-  height: fit-content;
   margin: 0 auto 2rem auto;
   display: flex;
   flex-direction: column;
@@ -684,6 +689,7 @@ h1 {
     justify-content: space-between;
     align-items: flex-start;
     max-width: none;
+    height: 169px;
   }
 }
 @media (min-width: 1024px) {
@@ -702,7 +708,7 @@ h1 {
 .activity-card_map {
   border-radius: 1rem;
   min-width: 15rem;
-  height: 150px;
+  height: 100%;
   width: 100%;
   overflow: hidden;
   z-index: 0;

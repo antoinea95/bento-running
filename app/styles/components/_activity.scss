@@ -8,11 +8,15 @@
 
         &-last {
             width: 100%;
-            height: 80%;
+            height: fit-content;
             @include flexbox(row, center, center);
             mask-image: none;
             -webkit-mask-image: none;
-            margin-bottom: 2rem;
+            margin-bottom: 0;
+
+            @include responsive(small) {
+                margin-bottom: 2rem;
+            }
 
             @include responsive(large) {
                 margin-bottom: 0;
@@ -41,14 +45,15 @@
 
     &-card {
         width: 90%;
+        height: 280px;
         max-width: 350px;
-        height: fit-content;
         margin: 0 auto 2rem auto;
         @include flexbox(column, flex-start, center);
 
         @include responsive(small) {
             @include flexbox(row, space-between, flex-start);
             max-width: none;
+            height: 169px;
         }
 
         @include responsive(medium) {
@@ -69,7 +74,7 @@
         &_map {
             border-radius: 1rem;
             min-width: 15rem;
-            height: 150px;
+            height: 100%;
             width: 100%;
             overflow: hidden;
             z-index: 0;
