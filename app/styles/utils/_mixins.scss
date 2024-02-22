@@ -47,13 +47,7 @@ $breakpoints: (
 
 @mixin box($bg) {
   background-color: $bg;
-  padding: 1rem;
-
-  @include responsive(small) {
-    padding: 1rem 2rem;
-  }
-
-
+  padding: 1rem 2rem;
 }
 
 @mixin componentTitle() {

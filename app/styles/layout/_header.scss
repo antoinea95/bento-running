@@ -23,7 +23,7 @@
     &-profile {
         @include flexbox(row, space-between, center);
         width: 95%;
-        max-width: 13rem;
+        max-width: 11rem;
 
         @include responsive(small) {
             max-width: 15rem;

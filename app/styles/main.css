@@ -135,7 +135,7 @@ h1 {
 
 .header {
   background-color: white;
-  padding: 1rem;
+  padding: 1rem 2rem;
   border: double 1px transparent;
   border-radius: 2rem;
   background-image: linear-gradient(white, white), linear-gradient(307deg, rgba(252, 76, 1, 0.5) 5%, #F7F0F0 10%, #F7F0F0 90%, rgba(252, 76, 1, 0.5) 95%);
@@ -150,11 +150,6 @@ h1 {
   margin: 3rem auto 0 auto;
   height: 8rem;
   padding: 1rem 2rem;
-}
-@media (min-width: 767px) {
-  .header {
-    padding: 1rem 2rem;
-  }
 }
 @media (min-width: 1024px) {
   .header {
@@ -173,7 +168,7 @@ h1 {
   justify-content: space-between;
   align-items: center;
   width: 95%;
-  max-width: 13rem;
+  max-width: 11rem;
 }
 @media (min-width: 767px) {
   .header-profile {
@@ -202,17 +197,12 @@ h1 {
 
 [data-theme=dark] .header {
   background-color: #041425;
-  padding: 1rem;
+  padding: 1rem 2rem;
   border: double 1px transparent;
   border-radius: 2rem;
   background-image: linear-gradient(#041425, #041425), linear-gradient(307deg, rgba(255, 255, 255, 0.2) 5%, #00253D 10%, #00253D 90%, rgba(255, 255, 255, 0.2) 95%);
   background-origin: border-box;
   background-clip: padding-box, border-box;
-}
-@media (min-width: 767px) {
-  [data-theme=dark] .header {
-    padding: 1rem 2rem;
-  }
 }
 
 .stats-title {
@@ -265,7 +255,7 @@ h1 {
 }
 .dashboard-error {
   background-color: white;
-  padding: 1rem;
+  padding: 1rem 2rem;
   border: double 1px transparent;
   border-radius: 2rem;
   background-image: linear-gradient(white, white), linear-gradient(307deg, rgba(252, 76, 1, 0.5) 5%, #F7F0F0 10%, #F7F0F0 90%, rgba(252, 76, 1, 0.5) 95%);
@@ -279,11 +269,6 @@ h1 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-@media (min-width: 767px) {
-  .dashboard-error {
-    padding: 1rem 2rem;
-  }
 }
 .dashboard-error h2 {
   font-size: 3.5rem;
@@ -310,7 +295,7 @@ h1 {
 }
 .dashboard-item {
   background-color: white;
-  padding: 1rem;
+  padding: 1rem 2rem;
   border: double 1px transparent;
   border-radius: 2rem;
   background-image: linear-gradient(white, white), linear-gradient(307deg, rgba(252, 76, 1, 0.5) 5%, #F7F0F0 10%, #F7F0F0 90%, rgba(252, 76, 1, 0.5) 95%);
@@ -322,11 +307,6 @@ h1 {
   align-items: center;
   width: 95%;
   margin: 2rem auto;
-}
-@media (min-width: 767px) {
-  .dashboard-item {
-    padding: 1rem 2rem;
-  }
 }
 @media (min-width: 767px) {
   .dashboard-item {
@@ -374,32 +354,22 @@ h1 {
 
 [data-theme=dark] .dashboard-item {
   background-color: #041425;
-  padding: 1rem;
+  padding: 1rem 2rem;
   border: double 1px transparent;
   border-radius: 2rem;
   background-image: linear-gradient(#041425, #041425), linear-gradient(307deg, rgba(255, 255, 255, 0.2) 5%, #00253D 10%, #00253D 90%, rgba(255, 255, 255, 0.2) 95%);
   background-origin: border-box;
   background-clip: padding-box, border-box;
-}
-@media (min-width: 767px) {
-  [data-theme=dark] .dashboard-item {
-    padding: 1rem 2rem;
-  }
 }
 
 [data-theme=dark] .dashboard-error {
   background-color: #041425;
-  padding: 1rem;
+  padding: 1rem 2rem;
   border: double 1px transparent;
   border-radius: 2rem;
   background-image: linear-gradient(#041425, #041425), linear-gradient(307deg, rgba(255, 255, 255, 0.2) 5%, #00253D 10%, #00253D 90%, rgba(255, 255, 255, 0.2) 95%);
   background-origin: border-box;
   background-clip: padding-box, border-box;
-}
-@media (min-width: 767px) {
-  [data-theme=dark] .dashboard-error {
-    padding: 1rem 2rem;
-  }
 }
 
 .signin {
