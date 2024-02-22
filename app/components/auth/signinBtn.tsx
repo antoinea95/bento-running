@@ -12,6 +12,7 @@ export default function SigninButton() {
         <button 
         className="signin-btn"
         onClick={() => signIn("strava")}
+        aria-label="Connect with Strava"
         >
             <span className={cairo.className}>Connect with strava</span>
             <Image src={"/images/strava-icon.webp"} alt="Logo de strava" width={100} height={20} />

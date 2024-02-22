@@ -16,8 +16,8 @@ export const ThemeChanger = () => {
   
     return (
       <>
-        {theme === "light" ?  <button className="theme-btn" onClick={() => setTheme('dark')}><Moon className="theme-btn_icon" /></button> :
-        <button className="theme-btn" onClick={() => setTheme('light')}><Sun  className="theme-btn_icon"/></button>
+        {theme === "light" ?  <button  aria-label="Change to dark theme" className="theme-btn" onClick={() => setTheme('dark')}><Moon className="theme-btn_icon" /></button> :
+        <button  aria-label="Change to light theme" className="theme-btn" onClick={() => setTheme('light')}><Sun  className="theme-btn_icon"/></button>
         }
       </>
     )

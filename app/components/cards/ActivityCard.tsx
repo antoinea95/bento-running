@@ -14,7 +14,10 @@ import {
   Route,
 } from "lucide-react";
 
-const MyAwesomeMap = dynamic(() => import("../map/Map"), { ssr: false });
+const MyAwesomeMap = dynamic(() => import("../map/Map"), { 
+  ssr: false ,
+  loading: () => (<div className="activity-card_map_placeholder"><Footprints className="placeholder-icon" /></div>)
+});
 
 export default function ActivityCard({
   activity,
@@ -40,27 +43,27 @@ export default function ActivityCard({
         </div>
         <div className="activity-card_body_content">
           <div className="activity-card_body_content_item">
-            <h4>
+            <p>
               <Route className="activity-card_icon" />
-            </h4>
+            </p>
             <p>{(activity.distance / 1000).toFixed(2)} km</p>
           </div>
           <div className="activity-card_body_content_item">
-            <h4>
+            <p>
               <Hourglass className="activity-card_icon" />
-            </h4>
+            </p>
             <p>{convertSecondsInTime(activity.moving_time)}</p>
           </div>
           <div className="activity-card_body_content_item">
-            <h4>
+            <p>
               <Gauge className="activity-card_icon" />
-            </h4>
+            </p>
             <p>{convertSpeed(activity.average_speed)}</p>
           </div>
           <div className="activity-card_body_content_item">
-            <h4>
+            <p>
               <Heart className="activity-card_icon heart" />
-            </h4>
+            </p>
             {activity.has_heartrate ? (
               <p>{activity.average_heartrate?.toFixed(0)} bpm</p>
             ) : (
@@ -68,17 +71,17 @@ export default function ActivityCard({
             )}
           </div>
           <div className="activity-card_body_content_item">
-            <h4>
+            <p>
               <Mountain className="activity-card_icon" />
-            </h4>
+            </p>
             <p>{activity.total_elevation_gain} m</p>
           </div>
           {activity.average_cadence ? (
             <div className="activity-card_body_content_item">
-              <h4>
+              <p>
                 {" "}
                 <Footprints className="activity-card_icon" />
-              </h4>
+              </p>
               <p>{Math.round(activity.average_cadence * 2)}</p>
             </div>
           ) : null}

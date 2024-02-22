@@ -161,7 +161,7 @@ h1 {
     max-width: none;
   }
 }
-.header p {
+.header h1 {
   text-transform: uppercase;
   color: #fc4c01;
   font-size: 2rem;
@@ -528,6 +528,7 @@ h1 {
   background-color: transparent;
   border: none;
   cursor: pointer;
+  padding: 0;
 }
 
 .stats {

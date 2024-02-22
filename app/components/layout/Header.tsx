@@ -10,7 +10,7 @@ export default async function Header() {
   return (
     <header className="header">
       <Suspense fallback={<p>Wecome ... </p>}>
-        <p>Welcome {profile.firstname}</p>
+        <h1>Welcome {profile.firstname}</h1>
       </Suspense>
 
         <div className="header-profile">

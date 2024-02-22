@@ -10,6 +10,7 @@ export default function SignoutButton() {
         <button 
         onClick={() => signOut({callbackUrl: "/"})}
         className="signout-btn"
+        aria-label="Signout"
         >
             <LogOut className="header-profile_logout" />
         </button>

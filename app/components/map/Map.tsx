@@ -6,6 +6,7 @@ import { LatLngExpression, LatLngTuple } from "leaflet";
 import { MapContainer, Polyline, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { useIsClient } from "../../utils/hooks";
+import { Footprints } from "lucide-react";
 
 export default function Map({ sumPolyline }: { sumPolyline: string }) {
   const [center, setCenter] = useState<LatLngExpression | undefined>(undefined);
