@@ -6,8 +6,8 @@ import { fetchStravaActivities } from "@/app/lib/strava";
 
 export default async function Weekly() {
 
-    const {previousMonthEpoch} = getEpochTime(new Date())
-    const activities = await fetchStravaActivities("athlete/activities", {page:1, per_page: 200, after: previousMonthEpoch})
+    const {previousLastFoursWeeksEpoch} = getEpochTime(new Date())
+    const activities = await fetchStravaActivities("athlete/activities", {page:1, per_page: 200, after: previousLastFoursWeeksEpoch})
     const weekly = calculateWeeklyTotalRuns(activities);
 
     return (

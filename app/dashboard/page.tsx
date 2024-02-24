@@ -1,6 +1,6 @@
 import Header from "../components/layout/Header";
 import Stats from "../components/layout/Stats";
-import WeekSummary from "../components/layout/WeekSummary";
+import Summary from "../components/layout/Summary";
 import Weekly from "../components/layout/Weekly";
 import Monthly from "../components/layout/Monthly";
 import Activity from "../components/layout/Activity";
@@ -23,13 +23,7 @@ export default async function Dashboard() {
       <Suspense fallback={<DashboardSkeleton />}>
         <article className="dashboard">
           <section className="dashboard-item">
-            <h2 className="dashboard-item_title">
-              <div className="icon-container">
-                <Calendar className="icon" />
-              </div>
-              This week
-            </h2>
-            <WeekSummary />
+            <Summary />
           </section>
           <section className="dashboard-item">
             <h2 className="dashboard-item_title">

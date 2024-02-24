@@ -9,6 +9,63 @@
     @include responsive(small) {
         @include flexbox(row, space-between, center);
     }
+
+    &-select {
+
+        position: relative;
+        min-width: 15rem;
+
+        &_selected {
+            @include componentTitle;
+            @include flexbox(row, space-between, center);
+        }
+
+        &_dropDown {
+            border: none;
+            background-color: transparent;
+            @include flexbox(row,center,center);
+            cursor: pointer;
+            transform: rotate(0);
+            transition: transform 200ms ease-in-out;
+
+            &_open {
+                transform: rotate(180deg);
+            }
+        }
+
+        &_btn {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            padding: 0.2rem 1rem;
+            cursor: pointer;
+            background-color: transparent;
+            border: none;
+            width: 100%;
+            text-align: left;
+
+            &:hover {
+                background-color: rgba($color: $dark, $alpha: 0.3);
+            }
+        }
+
+        &_options {
+            position: absolute;
+            min-width: 15rem;
+            left: -0.1rem;
+            height: 0;
+            max-height: 0;
+            overflow: hidden;
+            @include flexbox(column, flex-start, flex-start);
+            transition: max-height 300ms ease-in-out;
+
+            &_open {
+                height: fit-content;
+                max-height: 6.3rem;
+                @include LightBorderGradient;
+                border-radius: 0;
+            }
+        }
+    }
     
 
         &-item {
@@ -38,3 +95,13 @@
             }
         }
 }
+
+[data-theme='dark'] .summary-select_options_open {
+    @include darkBorderGradient;
+    border-radius: 0;
+}
+
+[data-theme='dark'] .summary-select_btn:hover {
+    background-color: rgba($color: white, $alpha: 0.3);
+}
+

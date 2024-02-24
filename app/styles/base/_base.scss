@@ -20,6 +20,11 @@ body {
     color: $secondary;
 }
 
+button, 
+input {
+    font-family: inherit;
+}
+
 h1 {
     font-size: 2rem;
     font-weight: 900;

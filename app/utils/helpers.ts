@@ -50,6 +50,7 @@ function getStartOfWeek(date: Date): Date {
 
 export function getEpochTime(today: Date): {
   previousWeekEpoch: number;
+  previousLastFoursWeeksEpoch: number;
   previousMonthEpoch: number;
   januaryFirstEpoch: number;
 } {
@@ -57,14 +58,18 @@ export function getEpochTime(today: Date): {
   previousWeek.setHours(0, 0, 0);
   const previousWeekEpoch = Math.round(previousWeek.getTime() / 1000);
 
-  const previousMonth = getStartOfWeek(today);
-  previousMonth.setDate(previousMonth.getDate() - 21);
-  const previousMonthEpoch = Math.round(previousMonth.getTime() / 1000);
+  const previousLastFourWeeks = getStartOfWeek(today);
+  previousLastFourWeeks.setDate(previousLastFourWeeks.getDate() - 21);
+  const previousLastFoursWeeksEpoch = Math.round(previousLastFourWeeks.getTime() / 1000);
+
+  const firstDayOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+  firstDayOfMonth.setHours(0, 0, 0); // Set hours to beginning of the day
+  const previousMonthEpoch = Math.round(firstDayOfMonth.getTime() / 1000);
 
   const januaryFirst = new Date(today.getFullYear(), 0, 1);
   const januaryFirstEpoch = Math.round(januaryFirst.getTime() / 1000);
 
-  return { previousWeekEpoch, previousMonthEpoch , januaryFirstEpoch};
+  return { previousWeekEpoch, previousLastFoursWeeksEpoch, previousMonthEpoch , januaryFirstEpoch};
 };
 
 export function calculateMonthlyTotalRuns(activities: StravaActivitiesType) : StravaTotal[] {
@@ -144,7 +149,7 @@ return weeklyTotalRuns;
 
 };
 
-export const getWeekSummary = (activities: StravaActivitiesType) => {
+export const getSummary = (activities: StravaActivitiesType) => {
 
   if(activities.length === 0) {
     return {
