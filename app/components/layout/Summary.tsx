@@ -56,12 +56,12 @@ export default function Summary() {
                 className={` summary-select_dropDown ${showOptions ? "summary-select_dropDown_open" : ""}`}
                 onClick={() => setShowOptions(!showOptions)}
                 >
-                    <ChevronDown style={{padding: 0}}/>
+                    <ChevronDown style={{padding: 0}} color="#fc4c01"/>
                 </button>
             </h2>
             <div className={` summary-select_options ${showOptions ? "summary-select_options_open" : ""}`}>
             {Object.keys(allPeriods).map((key) => (
-                key!== period && <button key={key} onClick={() => {setPeriod(key); setShowOptions(false)}} className="summary-select_btn">{allPeriods[key as keyof typeof allPeriods]}</button>
+                key!== period && <button key={key} onClick={() => {setPeriod(key); setShowOptions(false)}} className="summary-select_btn"><span>{allPeriods[key as keyof typeof allPeriods]}</span></button>
             ))}
             </div>
         </div>
