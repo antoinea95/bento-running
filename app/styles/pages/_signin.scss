@@ -6,7 +6,7 @@
 
     &-container {
         animation: intro 1s ease-in-out forwards;
-        width: 95%;
+        width: 85%;
         max-width: 75rem;
         @include flexbox(column-reverse, flex-start, center);
 
