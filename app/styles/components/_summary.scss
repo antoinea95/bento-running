@@ -43,8 +43,12 @@
             width: 100%;
             text-align: left;
 
+            span {
+                color: $primary;
+            }
+
             &:hover {
-                background-color: rgba($color: $dark, $alpha: 0.3);
+                background-color: rgba($color: $dark, $alpha: 0.1);
             }
         }
 
@@ -103,7 +107,7 @@
 
 [data-theme='dark'] .summary-select_btn {
     &:hover {
-        background-color: rgba($color: white, $alpha: 0.3);
+        background-color: rgba($color: white, $alpha: 0.1);
     }
 }
 

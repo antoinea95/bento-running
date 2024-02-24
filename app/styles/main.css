@@ -619,8 +619,11 @@ h1 {
   width: 100%;
   text-align: left;
 }
+.summary-select_btn span {
+  color: #fc4c01;
+}
 .summary-select_btn:hover {
-  background-color: rgba(2, 10, 18, 0.3);
+  background-color: rgba(2, 10, 18, 0.1);
 }
 .summary-select_options {
   position: absolute;
@@ -682,7 +685,7 @@ h1 {
 }
 
 [data-theme=dark] .summary-select_btn:hover {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .activity {
