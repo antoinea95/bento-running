@@ -39,6 +39,11 @@ export function convertSpeed(speed: number) : string {
     let minutes = Math.floor(vitesseKmmin / 60);
     let secondes = Math.round(vitesseKmmin % 60);
 
+    if (secondes === 60) {
+      minutes++;
+      secondes = 0;
+  }
+
     return `${minutes}:${secondes < 10 ? '0' + secondes : secondes}/km`;
 };
 
