@@ -82,7 +82,7 @@ export default function ActivityCard({
                 {" "}
                 <Footprints className="activity-card_icon" />
               </p>
-              <p>{Math.round(activity.average_cadence * 2)}</p>
+              <p>{Math.round(activity.average_cadence * 2)} ppm</p>
             </div>
           ) : null}
         </div>
