@@ -381,12 +381,12 @@ h1 {
   width: 100vw;
   height: 100vh;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  animation: intro 1s ease-in-out forwards;
 }
 .signin-container {
-  animation: intro 1s ease-in-out forwards;
   width: 85%;
   max-width: 75rem;
   display: flex;
@@ -470,6 +470,21 @@ h1 {
   align-items: center;
   width: fit-content;
 }
+.signin-demo {
+  margin-top: 5rem;
+  width: 85%;
+  max-width: 75rem;
+}
+.signin-demo p {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #fc4c01;
+  text-transform: uppercase;
+  text-align: center;
+}
+.signin-demo_link {
+  color: #fc4c01;
+}
 
 .signin-btn {
   background-color: #fc4c01;
@@ -497,6 +512,13 @@ h1 {
 }
 .signin-btn:hover {
   transform: scale(1.1);
+}
+.signin-btn_link {
+  font-size: 2rem;
+  text-decoration: underline;
+  color: #fc4c01;
+  font-weight: 900;
+  text-transform: uppercase;
 }
 
 .signout-btn {

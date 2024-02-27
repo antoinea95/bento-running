@@ -6,6 +6,7 @@ import { redirect } from "next/navigation";
 import { StravaActivitiesSchema, StravaActivitiesType, StravaProfileSchema, StravaStatSchema } from "../types/schema";
 import { getEpochTime } from "../utils/helpers";
 import { resolve } from "path";
+import { mockedActivities } from "../utils/mock";
 
 const BASE_URL = "https://www.strava.com/api/v3";
 

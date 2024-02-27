@@ -1,19 +1,19 @@
 
 import { fetchStravaStat} from "@/app/lib/strava"
 import StatCard from "../cards/StatCard";
+import { StravaStatType } from "@/app/types/schema";
+import { mockedStat } from "@/app/utils/mock";
 
-export default async function Stats() {
+export default async function Stats({mocked} : {mocked?:boolean}) {
 
-    const stats = await fetchStravaStat()
+    let stats: StravaStatType;
 
-    // const stats = {
-    //     all_run_totals: {
-    //         count: 23,
-    //         distance: 23456,
-    //         moving_time: 123467,
-    //         elevation_gain: 345
-    //     }
-    // }
+    if(mocked) {
+        stats = mockedStat;
+    } else {
+        stats = await fetchStravaStat();
+    }
+
 
     return (
         <div className="stats">

@@ -2,22 +2,21 @@
 import { calculateMonthlyTotalRuns } from "@/app/utils/helpers";
 import { MonthChart } from "../charts/MonthChart";
 import { fetchAllActivities } from "@/app/lib/strava";
+import { StravaActivitiesType } from "@/app/types/schema";
+import { mockedActivities } from "@/app/utils/mock";
 
-export default async function Monthly() {
+export default async function Monthly({mocked} : {mocked?:boolean}) {
 
-    const activities = await fetchAllActivities();
+    let activities:StravaActivitiesType = [];
+
+    if(mocked) {
+         activities = mockedActivities.sort((a, b) =>  {
+            return +new Date(a.start_date_local) - +new Date(b.start_date_local)});
+    } else {
+         activities = await fetchAllActivities();
+    }
+
     const monthly = calculateMonthlyTotalRuns(activities);
-
-    // const monthly = [
-    //     {
-    //         date: "Jan.",
-    //         kilometers: 123
-    //     },
-    //     {
-    //         date: "Feb.",
-    //         kilometers: 345
-    //     },
-    // ]
 
     return (
         <div className="chart">

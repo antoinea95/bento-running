@@ -19,11 +19,11 @@ import DashboardSkeleton from "../components/layout/DashboardSkeleton";
 export default async function Dashboard() {
   return (
     <>
-      <Header />
+      <Header mocked={true}/>
       <Suspense fallback={<DashboardSkeleton />}>
         <article className="dashboard">
           <section className="dashboard-item">
-            <Summary />
+            <Summary mocked={true}/>
           </section>
           <section className="dashboard-item">
             <h2 className="dashboard-item_title">
@@ -32,7 +32,7 @@ export default async function Dashboard() {
               </div>
               Last activity
             </h2>
-            <LastActivity />
+            <LastActivity mocked={true}/>
           </section>
           <section className="dashboard-item">
             <h2 className="dashboard-item_title">
@@ -41,7 +41,7 @@ export default async function Dashboard() {
               </div>
               Trend
             </h2>
-            <Weekly />
+            <Weekly  mocked={true}/>
           </section>
           <section className="dashboard-item">
             <h2 className="dashboard-item_title">
@@ -50,7 +50,7 @@ export default async function Dashboard() {
               </div>
               Activities
             </h2>
-            <Activity mocked={false} />
+            <Activity mocked={true} />
             <div className="activity-fade"></div>
           </section>
           <section className="dashboard-item">
@@ -60,7 +60,7 @@ export default async function Dashboard() {
               </div>
               This year
             </h2>
-            <Monthly />
+            <Monthly mocked={true} />
           </section>
           <section className="dashboard-item">
             <h2 className="dashboard-item_title">
@@ -69,7 +69,7 @@ export default async function Dashboard() {
               </div>
               All times
             </h2>
-            <Stats />
+            <Stats mocked={true}/>
           </section>
         </article>
       </Suspense>

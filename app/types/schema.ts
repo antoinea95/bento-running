@@ -24,9 +24,7 @@ const statSchema = z.object({
 })
 
 export const StravaStatSchema = z.object({
-    recent_run_totals: statSchema,
     all_run_totals: statSchema,
-    ytd_run_totals: statSchema
 })
 
 export type StatType = z.infer<typeof statSchema >

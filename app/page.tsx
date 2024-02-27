@@ -4,6 +4,7 @@ import { getServerSession } from "next-auth"
 import { authOptions } from "./utils/auth";
 import { redirect } from "next/navigation";
 import Image from "next/image";
+import DemoButton from "./components/auth/demoBtn";
 
 export default async function LoginPage() {
 
@@ -18,7 +19,7 @@ export default async function LoginPage() {
         <article className="signin">
             <div className="signin-container">
                 <section className="signin-image">
-                    <Image src="/images/screen.png" width={1000} height={500} alt="Screen" />
+                    <Image src="/images/screen-dark.png" width={1000} height={500} alt="Screen" />
                 </section>
                 <div className="signin-content">
                 <section className="signin-title">
@@ -32,6 +33,9 @@ export default async function LoginPage() {
                 </section>
                 </div>  
             </div>  
+            <section className="signin-demo">
+                    <p>{"You don't have a Strava Account ? "}<DemoButton /></p>
+            </section>
         </article>
     )
 }

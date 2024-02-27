@@ -7,8 +7,9 @@ import { getEpochTime } from "@/app/utils/helpers";
 import { Calendar, ChevronDown } from "lucide-react";
 import { useEffect, useState } from "react";
 import SummaryCard from "../cards/SummaryCard";
+import { mockedActivities } from "@/app/utils/mock";
 
-export default function Summary() {
+export default function Summary({mocked} : {mocked?: true}) {
 
     const allPeriods = {
         "week": "This week",
@@ -21,25 +22,51 @@ export default function Summary() {
     const [showOptions, setShowOptions] = useState(false);
     const [activities, setActivities] = useState<StravaActivitiesType>([]);
 
-    const getActiviesByPeriod = async () => {
-        if(period === "week") {
-            const weekActivities = await fetchStravaActivities('athlete/activities', {page: 1, per_page: 200, after: previousWeekEpoch})
-            setActivities(weekActivities);
+    const getActivitiesByPeriod = async () => {
+        let activities: StravaActivitiesType = [];
+    
+        const fetchActivities = async (endpoint: string, params: any) => {
+            if (mocked) {
+                return mockedActivities.filter(activity => {
+                    const startDate = new Date(activity.start_date_local);
+                    if (period === "week") {
+                        const previousWeek = new Date();
+                        previousWeek.setDate(previousWeek.getDate() - 7);
+                        return startDate >= previousWeek;
+                    } else if (period === "month") {
+                        const previousMonth = new Date();
+                        previousMonth.setMonth(previousMonth.getMonth() - 1);
+                        return startDate >= previousMonth;
+                    }
+                    return true; // Return true for other periods or no period specified
+                });
+            } else {
+                return await fetchStravaActivities(endpoint, params);
+            }
+        };
+    
+        if (period === "week") {
+            activities = await fetchActivities('athlete/activities', { page: 1, per_page: 200, after: previousWeekEpoch });
+        } else if (period === "month") {
+            activities = await fetchActivities('athlete/activities', { page: 1, per_page: 200, after: previousMonthEpoch });
+        } else if (period === "year") {
+            if (mocked) {
+                activities = mockedActivities.filter(activity => {
+                    const startDate = new Date(activity.start_date_local);
+                    const previousYear = new Date();
+                    previousYear.setFullYear(previousYear.getFullYear() - 1);
+                    return startDate >= previousYear;
+                });
+            } else {
+                activities = await fetchAllActivities();
+            }
         }
-
-        if(period === "month") {
-            const monthActivities = await fetchStravaActivities('athlete/activities', {page: 1, per_page: 200, after: previousMonthEpoch})
-            setActivities(monthActivities);
-        }
-
-        if(period === "year") {
-            const yearActivities = await fetchAllActivities();
-            setActivities(yearActivities)
-        }
-    }
+    
+        setActivities(activities);
+    };
 
     useEffect(() => {
-        getActiviesByPeriod();
+        getActivitiesByPeriod();
     }, [period])
 
 
