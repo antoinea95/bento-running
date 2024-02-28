@@ -16,4 +16,4 @@ For charts, I used Recharts.
 
 For maps, I employed the react-leaflet library along with the Google Maps overlay for tiles.
 
-![Screen](https://github.com/antoinea95/strava-dashboard/blob/main/public/images/screen.png)
+![Screen](https://github.com/antoinea95/strava-dashboard/blob/main/public/images/screen-dark.png)
