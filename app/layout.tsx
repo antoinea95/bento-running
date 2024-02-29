@@ -8,8 +8,17 @@ import { DarkModeProvider } from "./providers/ThemeProvider";
 
 export const metadata: Metadata = {
   title: "Bento Running",
-  description: "A Bento dashboard where you can track your strava runs",
+  description: "Welcome to Bento Running: Your personalized dashboard box for summarizing your Strava running activities. Bento Running organizes your running activities into a clear and concise summary. Experience the simplicity and efficiency of Bento Running as it brings together your passion for running with the delight of staying informed.",
   icons: "../images/medal.svg",
+  openGraph: {
+    type: "website",
+    url: "https://bento-running.vercel.app",
+    title: "Bento Running",
+    images: [{
+      url: "https://bento-running.vercel.app/images/screen-dark.png"
+    }],
+    description: "Welcome to Bento Running: Your personalized dashboard box for summarizing your Strava running activities. Bento Running organizes your running activities into a clear and concise summary. Experience the simplicity and efficiency of Bento Running as it brings together your passion for running with the delight of staying informed.",
+  }
 };
 
 export default async function RootLayout({
