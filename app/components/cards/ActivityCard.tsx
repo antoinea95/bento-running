@@ -24,6 +24,7 @@ export default function ActivityCard({
 }: {
   activity: StravaActivitieType;
 }) {
+  
 
   return (
     <div className="activity-card">

@@ -11,7 +11,7 @@ export default async function LastActivity({mocked} : {mocked?:boolean}) {
              activities = mockedActivities.sort((a, b) =>  {
                 return +new Date(b.start_date_local) - +new Date(a.start_date_local)});
         } else {
-             activities = await fetchStravaActivities("athlete/activities", {page: 1, per_page: 1});
+             activities = await fetchStravaActivities("athlete/activities", {page: 1, per_page: 30});
         }
 
 
