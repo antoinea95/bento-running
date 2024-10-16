@@ -1,6 +1,5 @@
 .signin {
-    width: 100vw;
-    height: 100vh;
+    height: 90vh;
     @include flexbox(column, center, center);
     animation: intro 1s ease-in-out forwards;
 
