@@ -15,4 +15,4 @@ This is my first project developed using **Next.js** and **TypeScript**. Driven 
 - **Data Visualization**: Utilized **Recharts** for creating informative charts to visualize performance data.
 - **Mapping**: Employed the **react-leaflet** library along with Google Maps overlay for tile integration, providing an interactive experience for users.
 
-![Screen](https://github.com/antoinea95/strava-dashboard/blob/main/public/images/screen-dark.png)
+![Screen](https://github.com/antoinea95/bento-running/blob/main/public/images/screen-dark.png)
