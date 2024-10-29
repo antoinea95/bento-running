@@ -24,6 +24,10 @@ export default function ActivityCard({
 }: {
   activity: StravaActivitieType;
 }) {
+
+  if(!activity) {
+    return <p className="activity-loading_spinner">No activity yet</p>
+  }
   
 
   return (

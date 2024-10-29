@@ -17,6 +17,7 @@ export default async function Header({mocked} : {mocked?:boolean}) {
   }
 
 
+
   return (
     <header className="header">
       <Suspense fallback={<p>Wecome ... </p>}>
@@ -27,7 +28,7 @@ export default async function Header({mocked} : {mocked?:boolean}) {
         <div className="header-profile_image">
           <Suspense fallback={<div></div>}>
             <Image
-              src={profile.profile_medium}
+              src={profile.profile_medium === "avatar/athlete/medium.png" ? mockedProfile.profile_medium : profile.profile_medium}
               alt="Profile picture"
               width={40}
               height={40}

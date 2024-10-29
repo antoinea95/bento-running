@@ -9,7 +9,7 @@ export const StravaProfileSchema = z.object({
     city: z.string().nullable(),
     state: z.string().nullable(),
     country: z.string().nullable(),
-    profile_medium: z.string()
+    profile_medium: z.string(),
 })
 
 export type StravaProfileType = z.infer<typeof StravaProfileSchema >;
