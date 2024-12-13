@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { Cairo } from "next/font/google";
+import SignoutButton from "../components/auth/signoutBtn";
 const cairo = Cairo({ subsets: ["latin"], weight: ["400", "700", "900"] });
 
 export default function Error({
@@ -18,6 +19,7 @@ export default function Error({
   return (
     <div className="dashboard-error">
       <h2>Something went wrong!</h2>
+      <SignoutButton />
       <button
         onClick={
           () => reset()

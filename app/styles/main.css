@@ -715,6 +715,11 @@ h1 {
   -webkit-mask-image: linear-gradient(to bottom, white 80%, transparent 100%);
   mask-image: linear-gradient(to bottom, white 80%, transparent 100%);
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5rem;
 }
 .activity-last {
   width: 100%;
@@ -755,7 +760,7 @@ h1 {
 }
 .activity-card {
   width: 90%;
-  height: 280px;
+  max-height: 350px;
   max-width: 350px;
   margin: 0 auto 2rem auto;
   display: flex;
@@ -780,7 +785,6 @@ h1 {
 }
 .activity-card_icon {
   width: 1.6rem;
-  height: 1.6rem;
   color: #fc4c01;
 }
 .activity-card .heart {
@@ -839,25 +843,20 @@ h1 {
 .activity-card_body_content {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(6rem, 1fr));
-  gap: 0.5rem;
+  gap: 1rem;
 }
 .activity-card_body_content_item {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start;
-}
-.activity-card_body_content_item h4 {
-  text-transform: uppercase;
-  font-weight: 700;
-  font-size: 1.3rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
   align-items: center;
 }
 .activity-card_body_content_item p {
   font-size: 1.3rem;
   font-weight: 900;
   white-space: nowrap;
+  height: fit-content;
+  line-height: 1;
+  width: fit-content;
+  padding: 0;
 }/*# sourceMappingURL=main.css.map */
